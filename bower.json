@@ -1,0 +1,21 @@
+{
+  "name": "react",
+  "authors": [
+    "ross_stanton@hotmail.com"
+  ],
+  "description": "",
+  "main": "",
+  "license": "AGPL",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^16.0.0",
+    "bootstrap": "^3.3.7"
+  }
+}

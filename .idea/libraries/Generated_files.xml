@@ -1,0 +1,33 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/dist/js/App.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/Alert.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/InputGroup.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/Nav.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/NewApplicationForm.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/pplicationForm.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/ApplicationForm.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/Jumbo.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/dist/src/App.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/App.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/test/test.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/test/test.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/NewApplicationForm.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/pplicationForm.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/App.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/Alert.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/InputGroup.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/Nav.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/NewApplicationForm.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/pplicationForm.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/ApplicationForm.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/Jumbo.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
