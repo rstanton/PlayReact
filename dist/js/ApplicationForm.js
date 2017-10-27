@@ -20,7 +20,78 @@ var ApplicationForm = function (_React$Component) {
     _createClass(ApplicationForm, [{
         key: "render",
         value: function render() {
-            return React.createElement("div", null);
+            return React.createElement(
+                "div",
+                { className: "modal fade", tabIndex: "-1", id: this.props.id, role: "dialog" },
+                React.createElement(
+                    "div",
+                    { className: "modal-dialog", role: "document" },
+                    React.createElement(
+                        "div",
+                        { className: "modal-content" },
+                        React.createElement(
+                            "div",
+                            { className: "modal-header" },
+                            React.createElement(
+                                "button",
+                                { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" },
+                                React.createElement(
+                                    "span",
+                                    { "aria-hidden": "true" },
+                                    "\xD7"
+                                )
+                            ),
+                            React.createElement(
+                                "h4",
+                                { className: "modal-title" },
+                                this.props.title
+                            )
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "modal-body" },
+                            React.createElement(
+                                "form",
+                                null,
+                                React.createElement(
+                                    "div",
+                                    { className: "form-group" },
+                                    React.createElement(
+                                        "label",
+                                        { htmlFor: "exampleInputEmail1" },
+                                        "Email address"
+                                    ),
+                                    React.createElement("input", { type: "email", className: "form-control", id: "exampleInputEmail1", placeholder: "Email" })
+                                ),
+                                React.createElement(
+                                    "div",
+                                    { className: "form-group" },
+                                    React.createElement(
+                                        "label",
+                                        { htmlFor: "exampleOther" },
+                                        "Name"
+                                    ),
+                                    React.createElement("input", { type: "text", className: "form-control", id: "exampleOther", placeholder: "Name" })
+                                )
+                            )
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "modal-footer" },
+                            React.createElement(
+                                "button",
+                                { type: "button", className: "btn btn-default", "data-dismiss": "modal" },
+                                "Close"
+                            ),
+                            React.createElement(
+                                "button",
+                                { type: "button", className: "btn btn-primary" },
+                                "Save changes"
+                            )
+                        )
+                    )
+                )
+            );
         }
     }]);
 

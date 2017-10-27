@@ -27,9 +27,7 @@ var InputGroup = function (_React$Component) {
                     "aria-describedby": "basic-addon2" }),
                 React.createElement(
                     "span",
-                    { className: "input-group-addon", id: "basic-addon2", onClick: function onClick() {
-                            console.log("Hello");return React.createElement(ApplicationForm, null);
-                        } },
+                    { className: "input-group-addon", id: "basic-addon2", "data-toggle": "modal", "data-target": "#AppModal" },
                     "@",
                     this.props.domain
                 )
