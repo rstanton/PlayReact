@@ -8,26 +8,45 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Alert = function (_React$Component) {
-    _inherits(Alert, _React$Component);
+//this class will iterate through all the diagrams in the database...
+var DiagramLister = function (_React$Component) {
+    _inherits(DiagramLister, _React$Component);
 
-    function Alert() {
-        _classCallCheck(this, Alert);
+    function DiagramLister(props) {
+        _classCallCheck(this, DiagramLister);
 
-        return _possibleConstructorReturn(this, (Alert.__proto__ || Object.getPrototypeOf(Alert)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (DiagramLister.__proto__ || Object.getPrototypeOf(DiagramLister)).call(this, props));
+
+        _this.state = { list: "" };
+        return _this;
     }
 
-    _createClass(Alert, [{
+    _createClass(DiagramLister, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            diagramDB.query("diagrams/by_name", function (err, res) {
+                var list = res.rows.map(function (key) {
+                    return React.createElement(
+                        "li",
+                        null,
+                        key.key
+                    );
+                });
+
+                this.setState({ list: list });
+            }.bind(this));
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
-                "div",
-                { id: "alert", className: "alert alert-" + this.props.status, role: "alert" },
-                this.props.message
+                "ul",
+                null,
+                this.state.list
             );
         }
     }]);
 
-    return Alert;
+    return DiagramLister;
 }(React.Component);
-//# sourceMappingURL=Alert.js.map
+//# sourceMappingURL=DiagramLister.js.map
