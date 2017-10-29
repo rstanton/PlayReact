@@ -15,12 +15,19 @@ class App extends React.Component{
     }
 
 
-    
+    /**
+     * Adds the navigation, adds a hidden modal for new applications, shows the tabbed screen
+     * @returns {XML}
+     */
     render(){
-        return <div className="container">
-            <Nav/>
-            <ApplicationForm id="AppModal" title="Create A New Application" body=""/>
-            <TabSheet/>
+        return <div>
+            <div className="container-fluid">
+                <Nav/>
+            </div>
+            <div className="container">
+                <TabSheet/>
+            </div>
+            <Canvas/>
         </div>;
     }
 }

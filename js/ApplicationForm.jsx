@@ -23,11 +23,11 @@ class ApplicationForm extends React.Component{
                         <div className="modal-body">
                             <div className="form-group">
                                 <label htmlFor="appName">Application Name</label>
-                                <input type="text" className="form-control" id="appName" value={this.state.appValue} placeholder="Application Name" onChange={this.handleChange}/>
+                                <input type="text" className="form-control" id="appName" value={this.state.appName} placeholder="Application Name" onChange={this.handleChange}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="appVendor">Vendor</label>
-                                <input type="text" className="form-control" id="appVendor" value={this.state.vendorValue} placeholder="Vendor Name" onChange={this.handleChange}/>
+                                <input type="text" className="form-control" id="appVendor" value={this.state.appVendor} placeholder="Vendor Name" onChange={this.handleChange}/>
                             </div>
                        </div>
                         <div className="modal-footer">
@@ -56,10 +56,18 @@ class ApplicationForm extends React.Component{
         appDB.post(app, function(err, doc){
             if(err)
                 console.log(err);
+        });
 
-            console.log(doc);
+        //close the modal
+        $("#"+this.props.id).modal('toggle');
+
+        this.setState({
+            appVendor:"",
+            appName: ""
         });
 
         event.preventDefault();
+
+        this.props.view();
     }
 }

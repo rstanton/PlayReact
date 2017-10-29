@@ -17,42 +17,166 @@ var DiagramLister = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (DiagramLister.__proto__ || Object.getPrototypeOf(DiagramLister)).call(this, props));
 
-        _this.state = { list: "" };
+        _this.state = {
+            list: []
+        };
+
+        _this.getDiagrams = _this.getDiagrams.bind(_this);
+        _this.displayDiagram = _this.displayDiagram.bind(_this);
         return _this;
     }
 
     _createClass(DiagramLister, [{
         key: "componentDidMount",
         value: function componentDidMount() {
-            diagramDB.query("diagrams/by_name", function (err, res) {
-                var list = res.rows.map(function (key) {
-                    return React.createElement(
-                        "li",
-                        null,
-                        key.key
-                    );
-                });
-
-                this.setState({ list: list });
-            }.bind(this));
+            this.getDiagrams();
         }
     }, {
         key: "render",
         value: function render() {
+            var _this2 = this;
+
             return React.createElement(
                 "div",
                 null,
+                React.createElement(DiagramForm, { view: this.getDiagrams.bind(this), id: "DiagramModal", title: "Create A New Diagram", body: "" }),
                 React.createElement(
-                    "button",
-                    { type: "button", className: "btn btn-default", "data-toggle": "modal", "data-target": "#AppModal" },
-                    "Create Application"
-                ),
-                React.createElement(
-                    "ul",
-                    null,
-                    this.state.list
+                    "table",
+                    { className: "table table-striped" },
+                    React.createElement(
+                        "thead",
+                        null,
+                        React.createElement(
+                            "tr",
+                            null,
+                            React.createElement(
+                                "th",
+                                null,
+                                "#"
+                            ),
+                            React.createElement(
+                                "th",
+                                null,
+                                "Name"
+                            ),
+                            React.createElement(
+                                "th",
+                                null,
+                                "Author"
+                            ),
+                            React.createElement(
+                                "th",
+                                null,
+                                React.createElement("span", { onClick: function onClick() {
+                                        return _this2.getDiagrams();
+                                    }, className: "glyphicon glyphicon-refresh", "aria-hidden": "true" }),
+                                React.createElement("span", { "data-toggle": "modal", "data-target": "#DiagramModal", className: "glyphicon glyphicon-plus-sign", "aria-hidden": "true" })
+                            )
+                        )
+                    ),
+                    React.createElement(
+                        "tbody",
+                        null,
+                        this.state.list
+                    )
                 )
             );
+        }
+    }, {
+        key: "getDiagrams",
+        value: function getDiagrams() {
+
+            //Clear the current state
+            this.setState({
+                list: []
+            });
+
+            //Get all documents in the database index
+            diagramDB.query("diagrams/by_name", function (err, res) {
+                if (err) console.error(err);
+
+                //get a list of all the ids
+                var list = [];
+                list = res.rows.map(function (key) {
+                    return key.id;
+                });
+
+                for (var n = 0; n < list.length; n++) {
+                    diagramDB.get(list[n], function (err, doc) {
+                        var _this3 = this;
+
+                        if (err) console.error(err);
+
+                        //get the current array and add a new entry on the end
+                        var arr = this.state.list;
+                        arr.push(React.createElement(
+                            "tr",
+                            { key: doc._id },
+                            React.createElement(
+                                "td",
+                                null,
+                                doc._id
+                            ),
+                            React.createElement(
+                                "td",
+                                null,
+                                doc.diagramName
+                            ),
+                            React.createElement(
+                                "td",
+                                null,
+                                doc.appVendor
+                            ),
+                            React.createElement(
+                                "td",
+                                null,
+                                React.createElement(
+                                    "a",
+                                    { href: "#", title: "Delete Diagram" },
+                                    React.createElement("span", { onClick: function onClick() {
+                                            return _this3.delete(doc._id);
+                                        }, className: "glyphicon glyphicon-trash", "aria-hidden": "true" })
+                                ),
+                                React.createElement(
+                                    "a",
+                                    { href: "#", title: "Edit Diagram" },
+                                    React.createElement("span", { onClick: function onClick() {
+                                            return _this3.displayDiagram(doc._id);
+                                        }, className: "glyphicon glyphicon-pencil", "aria-hidden": "true" })
+                                )
+                            )
+                        ));
+
+                        //save to the state
+                        this.setState({ list: arr });
+                    }.bind(this));
+                }
+            }.bind(this));
+        }
+    }, {
+        key: "displayDiagram",
+        value: function displayDiagram(id) {
+            $("#tabs").addClass("hidden");
+            $("#canvas").removeClass("hidden");
+            $("#canvas").addClass("show");
+        }
+        /**
+         * Removes the application from the database that is associated with the specified application ID then refreshes the view state based on the updated DB contents
+         * @param id
+         */
+
+    }, {
+        key: "delete",
+        value: function _delete(id) {
+            console.log("Delete Request for " + id);
+
+            diagramDB.get(id, function (err, doc) {
+                diagramDB.remove(doc, function (err, response) {
+                    if (err) console.error(err);
+
+                    this.getDiagrams();
+                }.bind(this));
+            }.bind(this));
         }
     }]);
 

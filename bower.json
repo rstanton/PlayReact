@@ -17,6 +17,7 @@
   "dependencies": {
     "react": "^16.0.0",
     "bootstrap": "^3.3.7",
-    "pouchdb": "^6.3.4"
+    "pouchdb": "^6.3.4",
+    "draw2d": "^6.1.66"
   }
 }

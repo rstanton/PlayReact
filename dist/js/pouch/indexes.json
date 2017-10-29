@@ -4,21 +4,21 @@ var diagramDDoc = {
   views:{
     by_name:{
       map:function(doc) {
-  emit(doc.name);
-}.toString()
-}
-}
+       emit(doc.name);
+      }.toString()
+    }
+  }
 }
 
 var applicationDDoc = {
-_id:'_design/applications',
-views:{
-by_name:{
-map:function(doc) {
-emit(doc.name);
-}.toString()
-}
-}
+  _id:'_design/applications',
+  views:{
+    by_name:{
+      map:function(doc) {
+        emit(doc.appName);
+      }.toString()
+    }
+  }
 }
 
 var createIndex=function(dbconn, index){

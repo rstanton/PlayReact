@@ -1,6 +1,6 @@
 class TabSheet extends React.Component{
     render(){
-        return <div>
+        return <div id="tabs">
             <ul className="nav nav-tabs" role="tablist">
                 <li role="presentation"><a href="#diagrams" aria-controls="diagrams" role="tab" data-toggle="tab">Diagrams</a></li>
                 <li role="presentation"><a href="#applications" aria-controls="applications" role="tab" data-toggle="tab">Applications</a></li>

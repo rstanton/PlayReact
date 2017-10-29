@@ -22,7 +22,7 @@ var TabSheet = function (_React$Component) {
         value: function render() {
             return React.createElement(
                 "div",
-                null,
+                { id: "tabs" },
                 React.createElement(
                     "ul",
                     { className: "nav nav-tabs", role: "tablist" },

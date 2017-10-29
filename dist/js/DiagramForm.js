@@ -10,17 +10,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ApplicationForm = function (_React$Component) {
-    _inherits(ApplicationForm, _React$Component);
+var DiagramForm = function (_React$Component) {
+    _inherits(DiagramForm, _React$Component);
 
-    function ApplicationForm(props) {
-        _classCallCheck(this, ApplicationForm);
+    function DiagramForm(props) {
+        _classCallCheck(this, DiagramForm);
 
-        var _this = _possibleConstructorReturn(this, (ApplicationForm.__proto__ || Object.getPrototypeOf(ApplicationForm)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (DiagramForm.__proto__ || Object.getPrototypeOf(DiagramForm)).call(this, props));
 
         _this.state = {
-            appName: "",
-            appVendor: ""
+            diagramName: ""
         };
 
         _this.handleChange = _this.handleChange.bind(_this);
@@ -28,7 +27,7 @@ var ApplicationForm = function (_React$Component) {
         return _this;
     }
 
-    _createClass(ApplicationForm, [{
+    _createClass(DiagramForm, [{
         key: "render",
         value: function render() {
             return React.createElement(
@@ -70,19 +69,9 @@ var ApplicationForm = function (_React$Component) {
                                     React.createElement(
                                         "label",
                                         { htmlFor: "appName" },
-                                        "Application Name"
+                                        "Diagram Name"
                                     ),
-                                    React.createElement("input", { type: "text", className: "form-control", id: "appName", value: this.state.appName, placeholder: "Application Name", onChange: this.handleChange })
-                                ),
-                                React.createElement(
-                                    "div",
-                                    { className: "form-group" },
-                                    React.createElement(
-                                        "label",
-                                        { htmlFor: "appVendor" },
-                                        "Vendor"
-                                    ),
-                                    React.createElement("input", { type: "text", className: "form-control", id: "appVendor", value: this.state.appVendor, placeholder: "Vendor Name", onChange: this.handleChange })
+                                    React.createElement("input", { type: "text", className: "form-control", id: "diagramName", value: this.state.diagramName, placeholder: "Application Name", onChange: this.handleChange })
                                 )
                             ),
                             React.createElement(
@@ -115,12 +104,11 @@ var ApplicationForm = function (_React$Component) {
         key: "handleSubmit",
         value: function handleSubmit(event) {
             var app = {
-                "appName": this.state.appName,
-                "appVendor": this.state.appVendor
+                "diagramName": this.state.diagramName
             };
 
             console.log("Saving " + JSON.stringify(app));
-            appDB.post(app, function (err, doc) {
+            diagramDB.post(app, function (err, doc) {
                 if (err) console.log(err);
             });
 
@@ -128,8 +116,7 @@ var ApplicationForm = function (_React$Component) {
             $("#" + this.props.id).modal('toggle');
 
             this.setState({
-                appVendor: "",
-                appName: ""
+                diagramName: ""
             });
 
             event.preventDefault();
@@ -138,6 +125,6 @@ var ApplicationForm = function (_React$Component) {
         }
     }]);
 
-    return ApplicationForm;
+    return DiagramForm;
 }(React.Component);
-//# sourceMappingURL=ApplicationForm.js.map
+//# sourceMappingURL=DiagramForm.js.map
