@@ -18,7 +18,10 @@ class DiagramLister extends React.Component{
     }
 
     render() {
-        return <ul>{this.state.list}</ul>
+        return <div>
+            <button type="button" className="btn btn-default" data-toggle="modal" data-target="#AppModal">Create Application</button>
+            <ul>{this.state.list}</ul>
+        </div>
     }
 
 

@@ -40,9 +40,18 @@ var DiagramLister = function (_React$Component) {
         key: "render",
         value: function render() {
             return React.createElement(
-                "ul",
+                "div",
                 null,
-                this.state.list
+                React.createElement(
+                    "button",
+                    { type: "button", className: "btn btn-default", "data-toggle": "modal", "data-target": "#AppModal" },
+                    "Create Application"
+                ),
+                React.createElement(
+                    "ul",
+                    null,
+                    this.state.list
+                )
             );
         }
     }]);

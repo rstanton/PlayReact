@@ -11,17 +11,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var diagramDB;
 var appDB;
 
-var ddoc = {
-    _id: '_design/diagrams',
-    views: {
-        by_name: {
-            map: function (doc) {
-                emit(doc.name);
-            }.toString()
-        }
-    }
-};
-
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
 
@@ -31,19 +20,11 @@ var App = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
         diagramDB = new PouchDB("diagrams");
-        appDB = new PouchDB("apps");
+        appDB = new PouchDB("appplications");
 
-        diagramDB.put(ddoc, function (err, doc) {
-            if (err) {
-                if (err.status != 409) console.error(err);
-            }
-        });
-
-        diagramDB.post({ name: "ross" }, function (err, doc) {
-            if (err) console.error(err);
-
-            console.log("OK");
-        });
+        //intialise database
+        createIndex(diagramDB, diagramDDoc);
+        createIndex(appDB, applicationDDoc);
         return _this;
     }
 
@@ -54,8 +35,7 @@ var App = function (_React$Component) {
                 "div",
                 { className: "container" },
                 React.createElement(Nav, null),
-                React.createElement(Alert, { status: "success", message: " All Ok ", timeout: "5000" }),
-                React.createElement(ApplicationForm, { id: "AppModal", title: "Something Urgent!", body: "Body Message. Better Fix whatever's up!" }),
+                React.createElement(ApplicationForm, { id: "AppModal", title: "Create A New Application", body: "" }),
                 React.createElement(TabSheet, null)
             );
         }

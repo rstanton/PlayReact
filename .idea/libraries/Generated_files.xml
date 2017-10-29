@@ -2,10 +2,11 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/dist/js/InterfaceLister.js" />
         <item url="file://$PROJECT_DIR$/dist/js/Jumbo.js" />
-        <item url="file://$PROJECT_DIR$/dist/js/DigramLister.js" />
         <item url="file://$PROJECT_DIR$/dist/js/ApplicationForm.js" />
         <item url="file://$PROJECT_DIR$/dist/js/Nav.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/ApplicationLister.js" />
         <item url="file://$PROJECT_DIR$/dist/js/TabSheet.js" />
         <item url="file://$PROJECT_DIR$/dist/js/InputGroup.js" />
         <item url="file://$PROJECT_DIR$/dist/js/Alert.js" />
@@ -22,10 +23,12 @@
       <root url="file://$PROJECT_DIR$/dist/js/pplicationForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/NewApplicationForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/pplicationForm.js" />
-      <root url="file://$PROJECT_DIR$/dist/js/Jumbo.js" />
       <root url="file://$PROJECT_DIR$/dist/js/DigramLister.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/InterfaceLister.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/Jumbo.js" />
       <root url="file://$PROJECT_DIR$/dist/js/ApplicationForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/Nav.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/ApplicationLister.js" />
       <root url="file://$PROJECT_DIR$/dist/js/TabSheet.js" />
       <root url="file://$PROJECT_DIR$/dist/js/InputGroup.js" />
       <root url="file://$PROJECT_DIR$/dist/js/Alert.js" />

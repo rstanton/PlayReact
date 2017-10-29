@@ -9,8 +9,8 @@ class TabSheet extends React.Component{
 
             <div className="tab-content">
                 <div role="tabpanel" className="tab-pane active" id="diagrams"><DiagramLister/></div>
-                <div role="tabpanel" className="tab-pane" id="applications">.b..</div>
-                <div role="tabpanel" className="tab-pane" id="interfaces">...c</div>
+                <div role="tabpanel" className="tab-pane" id="applications"><ApplicationLister/></div>
+                <div role="tabpanel" className="tab-pane" id="interfaces"><InterfaceLister/></div>
             </div>
         </div>
     }

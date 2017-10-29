@@ -65,12 +65,12 @@ var TabSheet = function (_React$Component) {
                     React.createElement(
                         "div",
                         { role: "tabpanel", className: "tab-pane", id: "applications" },
-                        ".b.."
+                        React.createElement(ApplicationLister, null)
                     ),
                     React.createElement(
                         "div",
                         { role: "tabpanel", className: "tab-pane", id: "interfaces" },
-                        "...c"
+                        React.createElement(InterfaceLister, null)
                     )
                 )
             );
