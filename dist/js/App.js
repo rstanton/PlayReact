@@ -49,8 +49,7 @@ var App = function (_React$Component) {
                     "div",
                     { className: "container" },
                     React.createElement(TabSheet, null)
-                ),
-                React.createElement(Canvas, null)
+                )
             );
         }
     }]);

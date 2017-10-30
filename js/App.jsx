@@ -27,7 +27,6 @@ class App extends React.Component{
             <div className="container">
                 <TabSheet/>
             </div>
-            <Canvas/>
         </div>;
     }
 }

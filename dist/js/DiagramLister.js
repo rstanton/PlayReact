@@ -22,7 +22,6 @@ var DiagramLister = function (_React$Component) {
         };
 
         _this.getDiagrams = _this.getDiagrams.bind(_this);
-        _this.displayDiagram = _this.displayDiagram.bind(_this);
         return _this;
     }
 
@@ -139,10 +138,8 @@ var DiagramLister = function (_React$Component) {
                                 ),
                                 React.createElement(
                                     "a",
-                                    { href: "#", title: "Edit Diagram" },
-                                    React.createElement("span", { onClick: function onClick() {
-                                            return _this3.displayDiagram(doc._id);
-                                        }, className: "glyphicon glyphicon-pencil", "aria-hidden": "true" })
+                                    { href: "canvas.html?" + doc._id, target: "_blank", title: "Edit Diagram" },
+                                    React.createElement("span", { className: "glyphicon glyphicon-pencil", "aria-hidden": "true" })
                                 )
                             )
                         ));
@@ -153,13 +150,7 @@ var DiagramLister = function (_React$Component) {
                 }
             }.bind(this));
         }
-    }, {
-        key: "displayDiagram",
-        value: function displayDiagram(id) {
-            $("#tabs").addClass("hidden");
-            $("#canvas").removeClass("hidden");
-            $("#canvas").addClass("show");
-        }
+
         /**
          * Removes the application from the database that is associated with the specified application ID then refreshes the view state based on the updated DB contents
          * @param id

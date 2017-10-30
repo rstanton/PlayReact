@@ -8,27 +8,46 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var view;
+
 var Canvas = function (_React$Component) {
     _inherits(Canvas, _React$Component);
 
     function Canvas(props) {
         _classCallCheck(this, Canvas);
 
-        var _this = _possibleConstructorReturn(this, (Canvas.__proto__ || Object.getPrototypeOf(Canvas)).call(this, props));
+        return _possibleConstructorReturn(this, (Canvas.__proto__ || Object.getPrototypeOf(Canvas)).call(this, props));
 
-        _this.state = {
-            diagramName: "Ross' Diagram"
-        };
-        return _this;
+        //this.componentDidMount = this.componentDidMount().bind(this)
     }
 
     _createClass(Canvas, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var width = 2000;
+            var height = 2000;
+
+            view = new View(this.props.id, width, height);
+            view.setScrollArea("#" + this.props.id);
+        }
+    }, {
         key: "render",
         value: function render() {
-            return React.createElement("div", { id: "canvas", className: "container-fluid hidden" });
+            var style = {
+                width: "2000px",
+                height: "2000px"
+            };
+
+            return React.createElement(
+                "div",
+                { id: this.props.id + "_container" },
+                React.createElement("div", { style: style, id: this.props.id })
+            );
         }
     }]);
 
     return Canvas;
 }(React.Component);
+
+ReactDOM.render(React.createElement(Canvas, { id: "canvas" }), document.getElementById('root'));
 //# sourceMappingURL=Canvas.js.map
