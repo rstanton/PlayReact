@@ -8,56 +8,60 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var view;
+var ReuseApplicationForm = function (_React$Component) {
+    _inherits(ReuseApplicationForm, _React$Component);
 
-var Canvas = function (_React$Component) {
-    _inherits(Canvas, _React$Component);
+    function ReuseApplicationForm() {
+        _classCallCheck(this, ReuseApplicationForm);
 
-    function Canvas(props) {
-        _classCallCheck(this, Canvas);
-
-        return _possibleConstructorReturn(this, (Canvas.__proto__ || Object.getPrototypeOf(Canvas)).call(this, props));
-
-        //this.componentDidMount = this.componentDidMount().bind(this)
+        return _possibleConstructorReturn(this, (ReuseApplicationForm.__proto__ || Object.getPrototypeOf(ReuseApplicationForm)).apply(this, arguments));
     }
 
-    _createClass(Canvas, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            var width = 2000;
-            var height = 2000;
-
-            view = new View(this.props.id, width, height);
-            view.setScrollArea("#" + this.props.id);
-        }
+    _createClass(ReuseApplicationForm, [{
+        key: "super",
+        value: function _super(props) {}
     }, {
         key: "render",
         value: function render() {
-            var style = {
-                width: "2000px",
-                height: "2000px"
-            };
-
             return React.createElement(
-                "div",
-                null,
-                React.createElement(IntDialog, { id: "interfaceDialog", title: "Interfaces", body: "Interfaces Here" }),
-                React.createElement(AppDialog, { id: "applicationDialog", title: "Applications", body: "Applications Here" }),
+                "form",
+                { action: "#", onSubmit: this.handleSubmit },
                 React.createElement(
-                    "div",
-                    { id: this.props.id + "_container" },
-                    React.createElement("div", { style: style, id: this.props.id })
+                    "button",
+                    { type: "button", className: "btn btn-default", "data-dismiss": "modal" },
+                    "Cancel"
+                ),
+                React.createElement(
+                    "button",
+                    { type: "submit", className: "btn btn-primary" },
+                    "Save changes"
                 )
             );
         }
+    }, {
+        key: "handleSubmit",
+        value: function handleSubmit(event) {
+            var appDB = new PouchDB("applications");
+            var app = {
+                "appName": this.state.appName,
+                "appVendor": this.state.appVendor
+            };
+
+            this.setState({
+                appVendor: "",
+                appName: ""
+            });
+
+            event.preventDefault();
+
+            //Next is the function passed in from the calling application! Love JS!
+            //@ToDo Need to pass back the ID as well
+            this.props.next(app);
+
+            //@ToDo need to close PouchDB connection
+        }
     }]);
 
-    return Canvas;
+    return ReuseApplicationForm;
 }(React.Component);
-
-ReactDOM.render(React.createElement(
-    "div",
-    null,
-    React.createElement(Canvas, { id: "canvas" })
-), document.getElementById('root'));
-//# sourceMappingURL=Canvas.js.map
+//# sourceMappingURL=ReuseAppForm.js.map

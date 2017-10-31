@@ -2,7 +2,7 @@ class LabelledConnection extends draw2d.Connection{
     constructor(attr){
             super(attr);
 
-            this.add(new draw2d.shape.icon.ZoomIn({width:30, height:30}),new draw2d.layout.locator.ManhattanMidpointLocator());
+            //this.add(new draw2d.shape.icon.ZoomIn({width:30, height:30}),new draw2d.layout.locator.ManhattanMidpointLocator());
 
             this.attr({
                 router:new draw2d.layout.connection.InteractiveManhattanConnectionRouter(),

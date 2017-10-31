@@ -2,17 +2,22 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/dist/js/InterfaceLister.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/NewApplicationForm.js" />
         <item url="file://$PROJECT_DIR$/dist/js/Jumbo.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/AppDialog.js" />
         <item url="file://$PROJECT_DIR$/dist/js/ApplicationForm.js" />
-        <item url="file://$PROJECT_DIR$/dist/js/Nav.js" />
         <item url="file://$PROJECT_DIR$/dist/js/Canvas.js" />
-        <item url="file://$PROJECT_DIR$/dist/js/ApplicationLister.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/Nav.js" />
         <item url="file://$PROJECT_DIR$/dist/js/TabSheet.js" />
         <item url="file://$PROJECT_DIR$/dist/js/InputGroup.js" />
         <item url="file://$PROJECT_DIR$/dist/js/Alert.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/Dialog.js" />
         <item url="file://$PROJECT_DIR$/dist/js/App.js" />
         <item url="file://$PROJECT_DIR$/dist/js/DiagramForm.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/IntDialog.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/InterfaceLister.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/ApplicationLister.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/ReuseAppForm.js" />
         <item url="file://$PROJECT_DIR$/dist/js/DiagramLister.js" />
       </sourceFilesUrls>
     </properties>
@@ -21,22 +26,32 @@
       <root url="file://$PROJECT_DIR$/dist/src/App.js" />
       <root url="file://$PROJECT_DIR$/dist/js/test/test.js" />
       <root url="file://$PROJECT_DIR$/dist/js/test/test.js" />
-      <root url="file://$PROJECT_DIR$/dist/js/NewApplicationForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/pplicationForm.js" />
-      <root url="file://$PROJECT_DIR$/dist/js/NewApplicationForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/pplicationForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/DigramLister.js" />
-      <root url="file://$PROJECT_DIR$/dist/js/Jumbo.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/CanvasDialog.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/Test.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/CanvasDialog.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/Test.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/NewAppDialog.js" />
       <root url="file://$PROJECT_DIR$/dist/js/ApplicationForm.js" />
-      <root url="file://$PROJECT_DIR$/dist/js/Nav.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/NewAppDialog.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/NewApplicationForm.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/Jumbo.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/AppDialog.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/ApplicationForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/Canvas.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/Nav.js" />
       <root url="file://$PROJECT_DIR$/dist/js/TabSheet.js" />
       <root url="file://$PROJECT_DIR$/dist/js/InputGroup.js" />
       <root url="file://$PROJECT_DIR$/dist/js/Alert.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/Dialog.js" />
       <root url="file://$PROJECT_DIR$/dist/js/App.js" />
       <root url="file://$PROJECT_DIR$/dist/js/DiagramForm.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/IntDialog.js" />
       <root url="file://$PROJECT_DIR$/dist/js/InterfaceLister.js" />
       <root url="file://$PROJECT_DIR$/dist/js/ApplicationLister.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/ReuseAppForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/DiagramLister.js" />
     </CLASSES>
     <SOURCES />

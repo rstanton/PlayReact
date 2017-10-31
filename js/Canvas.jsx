@@ -22,13 +22,18 @@ class Canvas extends React.Component{
             height:"2000px"
         };
 
-        return <div id={this.props.id + "_container"}>
+        return <div>
+            <IntDialog id="interfaceDialog" title="Interfaces" body="Interfaces Here"/>
+            <AppDialog id="applicationDialog" title="Applications" body="Applications Here"/>
+            <div id={this.props.id + "_container"}>
             <div style={style} id={this.props.id} />
-        </div>
+            </div></div>
     }
 }
 
 ReactDOM.render(
-    <Canvas id="canvas"/>,
+    <div>
+        <Canvas id="canvas"/>
+     </div>,
     document.getElementById('root')
 );

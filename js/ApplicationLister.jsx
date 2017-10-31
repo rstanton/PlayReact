@@ -15,7 +15,7 @@ class ApplicationLister extends React.Component{
 
     render(){
         return <div>
-            <ApplicationForm view={this.getApplications.bind(this)} id="AppModal" title="Create A New Application" body=""/>
+            <ApplicationForm next={this.getApplications.bind(this)} id="AppModal" title="Create A New Application" body=""/>
             <table className="table table-striped">
                 <thead>
                     <tr><th>#</th><th>Name</th><th>Vendor</th><th>

@@ -35,7 +35,7 @@ var ApplicationLister = function (_React$Component) {
             return React.createElement(
                 "div",
                 null,
-                React.createElement(ApplicationForm, { view: this.getApplications.bind(this), id: "AppModal", title: "Create A New Application", body: "" }),
+                React.createElement(ApplicationForm, { next: this.getApplications.bind(this), id: "AppModal", title: "Create A New Application", body: "" }),
                 React.createElement(
                     "table",
                     { className: "table table-striped" },

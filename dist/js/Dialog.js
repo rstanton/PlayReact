@@ -8,56 +8,32 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var view;
+var Dialog = function (_React$Component) {
+    _inherits(Dialog, _React$Component);
 
-var Canvas = function (_React$Component) {
-    _inherits(Canvas, _React$Component);
+    function Dialog(props) {
+        _classCallCheck(this, Dialog);
 
-    function Canvas(props) {
-        _classCallCheck(this, Canvas);
+        var _this = _possibleConstructorReturn(this, (Dialog.__proto__ || Object.getPrototypeOf(Dialog)).call(this, props));
 
-        return _possibleConstructorReturn(this, (Canvas.__proto__ || Object.getPrototypeOf(Canvas)).call(this, props));
-
-        //this.componentDidMount = this.componentDidMount().bind(this)
+        _this.componentDidMount = _this.componentDidMount.bind(_this);
+        return _this;
     }
 
-    _createClass(Canvas, [{
+    _createClass(Dialog, [{
         key: "componentDidMount",
         value: function componentDidMount() {
-            var width = 2000;
-            var height = 2000;
-
-            view = new View(this.props.id, width, height);
-            view.setScrollArea("#" + this.props.id);
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var style = {
-                width: "2000px",
-                height: "2000px"
-            };
-
-            return React.createElement(
-                "div",
-                null,
-                React.createElement(IntDialog, { id: "interfaceDialog", title: "Interfaces", body: "Interfaces Here" }),
-                React.createElement(AppDialog, { id: "applicationDialog", title: "Applications", body: "Applications Here" }),
-                React.createElement(
-                    "div",
-                    { id: this.props.id + "_container" },
-                    React.createElement("div", { style: style, id: this.props.id })
-                )
-            );
+            $("#" + this.props.id).dialog({
+                autoOpen: false,
+                closeOnEscape: true,
+                title: this.props.title,
+                width: 500,
+                height: 500,
+                resizable: false
+            });
         }
     }]);
 
-    return Canvas;
+    return Dialog;
 }(React.Component);
-
-ReactDOM.render(React.createElement(
-    "div",
-    null,
-    React.createElement(Canvas, { id: "canvas" })
-), document.getElementById('root'));
-//# sourceMappingURL=Canvas.js.map
+//# sourceMappingURL=Dialog.js.map

@@ -3,13 +3,18 @@ class CanvasPolicy extends draw2d.policy.canvas.CanvasPolicy{
         super();
     }
 
-    onDoubleClick(the, x, y, shift, ctrl){
-        console.log("Double Click "+the);
+    onDrop(node, x, y, shift, ctrl){
+        console.log("dropped");
 
-        let rect = new draw2d.shape.basic.Rectangle();
-        rect.createPort("hybrid", new draw2d.layout.locator.InputPortLocator());
-        rect.createPort("hybrid", new draw2d.layout.locator.OutputPortLocator());
+    }
 
-        view.add(rect);
+    onDoubleClick(the, x, y, shift, ctrl) {
+
+        /*        let rect = new draw2d.shape.basic.Rectangle({width:150, height:100});
+                rect.createPort("hybrid", new draw2d.layout.locator.InputPortLocator());
+                rect.createPort("hybrid", new draw2d.layout.locator.OutputPortLocator());
+                view.add(rect);*/
+        console.log("Double Click");
+        $("#applicationDialog").dialog("open");
     }
 }
