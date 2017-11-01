@@ -1,13 +1,11 @@
 var diagramDB;
 var appDB;
-
-
 class App extends React.Component{
     constructor(props){
         super(props);
 
         diagramDB = new PouchDB("diagrams");
-        appDB = new PouchDB("appplications");
+        appDB = new PouchDB("applications");
 
         //intialise database
         createIndex(diagramDB, diagramDDoc);
@@ -21,9 +19,8 @@ class App extends React.Component{
      */
     render(){
         return <div>
-            <div className="container-fluid">
-                <Nav/>
-            </div>
+            <NewApplicationDialog id={"AppModal"} body={"New Application"} modal={true}/>
+            <NewDiagramDialog id="diagramdialog" body="New Diagram" modal={true}/>
             <div className="container">
                 <TabSheet/>
             </div>

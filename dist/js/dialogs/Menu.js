@@ -8,51 +8,36 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var diagramDB;
-var appDB;
+var Menu = function (_React$Component) {
+    _inherits(Menu, _React$Component);
 
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
+    function Menu(props) {
+        _classCallCheck(this, Menu);
 
-    function App(props) {
-        _classCallCheck(this, App);
+        var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-        diagramDB = new PouchDB("diagrams");
-        appDB = new PouchDB("applications");
-
-        //intialise database
-        createIndex(diagramDB, diagramDDoc);
-        createIndex(appDB, applicationDDoc);
+        _this.componentDidMount = _this.componentDidMount.bind(_this);
         return _this;
     }
 
-    /**
-     * Adds the navigation, adds a hidden modal for new applications, shows the tabbed screen
-     * @returns {XML}
-     */
-
-
-    _createClass(App, [{
+    _createClass(Menu, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {}
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
                 "div",
-                null,
-                React.createElement(NewApplicationDialog, { id: "AppModal", body: "New Application", modal: true }),
-                React.createElement(NewDiagramDialog, { id: "diagramdialog", body: "New Diagram", modal: true }),
+                { id: "draggable", "class": "ui-widget-content" },
                 React.createElement(
-                    "div",
-                    { className: "container" },
-                    React.createElement(TabSheet, null)
+                    "p",
+                    null,
+                    "Drag me around"
                 )
             );
         }
     }]);
 
-    return App;
+    return Menu;
 }(React.Component);
-
-ReactDOM.render(React.createElement(App, null), document.getElementById('root'));
-//# sourceMappingURL=App.js.map
+//# sourceMappingURL=Menu.js.map

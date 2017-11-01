@@ -14,7 +14,6 @@ class CanvasPolicy extends draw2d.policy.canvas.CanvasPolicy{
                 rect.createPort("hybrid", new draw2d.layout.locator.InputPortLocator());
                 rect.createPort("hybrid", new draw2d.layout.locator.OutputPortLocator());
                 view.add(rect);*/
-        console.log("Double Click");
         $("#applicationDialog").dialog("open");
     }
 }

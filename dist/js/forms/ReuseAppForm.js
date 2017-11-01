@@ -8,51 +8,32 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var diagramDB;
-var appDB;
+var ReuseApplicationForm = function (_React$Component) {
+    _inherits(ReuseApplicationForm, _React$Component);
 
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
+    function ReuseApplicationForm(props) {
+        _classCallCheck(this, ReuseApplicationForm);
 
-    function App(props) {
-        _classCallCheck(this, App);
+        var _this = _possibleConstructorReturn(this, (ReuseApplicationForm.__proto__ || Object.getPrototypeOf(ReuseApplicationForm)).call(this, props));
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-        diagramDB = new PouchDB("diagrams");
-        appDB = new PouchDB("applications");
-
-        //intialise database
-        createIndex(diagramDB, diagramDDoc);
-        createIndex(appDB, applicationDDoc);
+        _this.componentDidMount = _this.componentDidMount.bind(_this);
         return _this;
     }
 
-    /**
-     * Adds the navigation, adds a hidden modal for new applications, shows the tabbed screen
-     * @returns {XML}
-     */
-
-
-    _createClass(App, [{
+    _createClass(ReuseApplicationForm, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {}
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
-                "div",
-                null,
-                React.createElement(NewApplicationDialog, { id: "AppModal", body: "New Application", modal: true }),
-                React.createElement(NewDiagramDialog, { id: "diagramdialog", body: "New Diagram", modal: true }),
-                React.createElement(
-                    "div",
-                    { className: "container" },
-                    React.createElement(TabSheet, null)
-                )
+                "form",
+                { action: "#" },
+                React.createElement("input", { type: "text" })
             );
         }
     }]);
 
-    return App;
+    return ReuseApplicationForm;
 }(React.Component);
-
-ReactDOM.render(React.createElement(App, null), document.getElementById('root'));
-//# sourceMappingURL=App.js.map
+//# sourceMappingURL=ReuseAppForm.js.map

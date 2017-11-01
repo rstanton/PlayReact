@@ -1,10 +1,14 @@
 var view;
+var appDB;
+
 class Canvas extends React.Component{
 
     constructor(props){
         super(props);
 
-        //this.componentDidMount = this.componentDidMount().bind(this)
+        this.componentDidMount = this.componentDidMount.bind(this)
+
+        appDB = new PouchDB("applications");
     }
 
     componentDidMount(){
@@ -23,17 +27,27 @@ class Canvas extends React.Component{
         };
 
         return <div>
-            <IntDialog id="interfaceDialog" title="Interfaces" body="Interfaces Here"/>
-            <AppDialog id="applicationDialog" title="Applications" body="Applications Here"/>
+            <IntDialog next={this.next.bind(this)} modal="true" id="interfaceDialog" title="Interfaces" body="Interfaces Here"/>
+            <NewApplicationDialog next={this.next.bind(this)} modal="true" id="applicationDialog" title="Applications" body="Applications Here"/>
             <div id={this.props.id + "_container"}>
-            <div style={style} id={this.props.id} />
-            </div></div>
+                <div style={style} id={this.props.id} /></div>
+            </div>
+    }
+
+    next(obj){
+        $("#applicationDialog").dialog("close");
+        console.log(JSON.stringify(obj));
+        let rect = new draw2d.shape.basic.Rectangle();
+        let label = new draw2d.shape.basic.Label({text:obj.id+" "+obj.appName});
+        rect.add(label, new draw2d.layout.locator.BottomLocator());
+
+        view.add(rect);
     }
 }
 
 ReactDOM.render(
     <div>
         <Canvas id="canvas"/>
-     </div>,
+    </div>,
     document.getElementById('root')
 );

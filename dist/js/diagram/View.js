@@ -20,4 +20,9 @@ class View extends draw2d.Canvas {
         }));
         this.installEditPolicy(new CanvasPolicy());
     }
+
+
+    save(){
+
+    }
 }
