@@ -28,7 +28,7 @@ class Canvas extends React.Component{
 
         return <div>
             <IntDialog next={this.next.bind(this)} modal="true" id="interfaceDialog" title="Interfaces" body="Interfaces Here"/>
-            <NewApplicationDialog next={this.next.bind(this)} modal="true" id="applicationDialog" title="Applications" body="Applications Here"/>
+            <NewApplicationDialog reuse={true} next={this.next.bind(this)} modal="true" id="applicationDialog" title="Applications" body="Applications Here"/>
             <div id={this.props.id + "_container"}>
                 <div style={style} id={this.props.id} /></div>
             </div>

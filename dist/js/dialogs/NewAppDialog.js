@@ -20,9 +20,21 @@ var NewApplicationDialog = function (_Dialog) {
         return _possibleConstructorReturn(this, (NewApplicationDialog.__proto__ || Object.getPrototypeOf(NewApplicationDialog)).call(this, props));
     }
 
+    //@Todo this is kind of hacky and needs re-writing.
+
+
     _createClass(NewApplicationDialog, [{
         key: "render",
         value: function render() {
+            var reuse = null;
+            if (this.props.reuse) {
+                reuse = React.createElement(
+                    "div",
+                    { role: "tabpanel", className: "tab-pane", id: "reuse" },
+                    React.createElement(ReuseApplicationForm, { next: this.next.bind(this) })
+                );
+            }
+
             return React.createElement(
                 "div",
                 { id: this.props.id },
@@ -46,7 +58,7 @@ var NewApplicationDialog = function (_Dialog) {
                                 "New"
                             )
                         ),
-                        React.createElement(
+                        reuse != null && React.createElement(
                             "li",
                             { role: "presentation" },
                             React.createElement(
@@ -64,15 +76,14 @@ var NewApplicationDialog = function (_Dialog) {
                             { role: "tabpanel", className: "tab-pane active", id: "new" },
                             React.createElement(ApplicationForm, { next: this.next.bind(this) })
                         ),
-                        React.createElement(
-                            "div",
-                            { role: "tabpanel", className: "tab-pane", id: "reuse" },
-                            React.createElement(ReuseApplicationForm, { next: this.next.bind(this) })
-                        )
+                        reuse
                     )
                 )
             );
         }
+
+        //@ToDo this is the most hacky part!
+
     }, {
         key: "next",
         value: function next(obj) {

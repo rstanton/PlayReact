@@ -62,7 +62,7 @@ class DiagramLister extends React.Component{
                         console.error(err);
 
                     //get the current array and add a new entry on the end
-                    var arr = this.state.list;
+                    let arr = this.state.list;
                     arr.push(<tr key={doc._id}><td>{doc._id}</td><td>{doc.diagramName}</td><td>{doc.author}</td><td>
                         <a href="#" title="Delete Diagram"><span onClick={() => this.delete(doc._id)} className="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                         <a href={"canvas.html?"+doc._id} target="_blank" title="Edit Diagram"><span className="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>

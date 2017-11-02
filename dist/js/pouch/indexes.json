@@ -21,6 +21,17 @@ var applicationDDoc = {
   }
 }
 
+var schemaDDoc = {
+  _id:'_design/schemas',
+  views:{
+    by_name:{
+      map:function(doc) {
+        emit(doc.title);
+      }.toString()
+    }
+  }
+}
+
 var createIndex=function(dbconn, index){
     dbconn.put(index, function(err, doc){
       if(err)

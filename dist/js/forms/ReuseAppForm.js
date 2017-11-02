@@ -29,7 +29,7 @@ var ReuseApplicationForm = function (_React$Component) {
             return React.createElement(
                 "form",
                 { action: "#" },
-                React.createElement("input", { type: "text" })
+                React.createElement(ApplicationLister, null)
             );
         }
     }]);

@@ -8,19 +8,22 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Menu = function (_React$Component) {
-    _inherits(Menu, _React$Component);
+/**
+ *
+ */
+var EditorMenu = function (_React$Component) {
+    _inherits(EditorMenu, _React$Component);
 
-    function Menu(props) {
-        _classCallCheck(this, Menu);
+    function EditorMenu(props) {
+        _classCallCheck(this, EditorMenu);
 
-        var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (EditorMenu.__proto__ || Object.getPrototypeOf(EditorMenu)).call(this, props));
 
         _this.componentDidMount = _this.componentDidMount.bind(_this);
         return _this;
     }
 
-    _createClass(Menu, [{
+    _createClass(EditorMenu, [{
         key: "componentDidMount",
         value: function componentDidMount() {}
     }, {
@@ -28,7 +31,7 @@ var Menu = function (_React$Component) {
         value: function render() {
             return React.createElement(
                 "div",
-                { id: "draggable", "class": "ui-widget-content" },
+                { id: this.props.id, "class": "ui-widget-content" },
                 React.createElement(
                     "p",
                     null,
@@ -38,6 +41,6 @@ var Menu = function (_React$Component) {
         }
     }]);
 
-    return Menu;
+    return EditorMenu;
 }(React.Component);
 //# sourceMappingURL=Menu.js.map

@@ -14,8 +14,9 @@
         <item url="file://$PROJECT_DIR$/dist/js/dialogs/NewDiagramDialog.js" />
         <item url="file://$PROJECT_DIR$/dist/js/forms/NewApplicationForm.js" />
         <item url="file://$PROJECT_DIR$/dist/js/dialogs/IntDialog.js" />
-        <item url="file://$PROJECT_DIR$/dist/js/dialogs/AppDialog.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/listers/SchemaLister.js" />
         <item url="file://$PROJECT_DIR$/dist/js/dialogs/Dialog.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/forms/NewSchemaForm.js" />
         <item url="file://$PROJECT_DIR$/dist/js/forms/NewDiagramForm.js" />
       </sourceFilesUrls>
     </properties>
@@ -73,6 +74,7 @@
       <root url="file://$PROJECT_DIR$/dist/js/forms/DiagramForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/diagrams/NewDiagramDialog.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/applications/AppDialog.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/dialogs/AppDialog.js" />
       <root url="file://$PROJECT_DIR$/dist/js/Canvas.js" />
       <root url="file://$PROJECT_DIR$/dist/js/TabSheet.js" />
       <root url="file://$PROJECT_DIR$/dist/js/listers/InterfaceLister.js" />
@@ -85,8 +87,9 @@
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/NewDiagramDialog.js" />
       <root url="file://$PROJECT_DIR$/dist/js/forms/NewApplicationForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/IntDialog.js" />
-      <root url="file://$PROJECT_DIR$/dist/js/dialogs/AppDialog.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/listers/SchemaLister.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/Dialog.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/forms/NewSchemaForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/forms/NewDiagramForm.js" />
     </CLASSES>
     <SOURCES />

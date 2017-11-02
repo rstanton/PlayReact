@@ -10,7 +10,7 @@ class ReuseApplicationForm extends React.Component{
     }
     render(){
         return <form action="#">
-            <input type={"text"}/>
+            <ApplicationLister/>
         </form>
     }
 }

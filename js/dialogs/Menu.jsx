@@ -1,4 +1,8 @@
-class Menu extends React.Component{
+/**
+ *
+ */
+class EditorMenu extends React.Component{
+
     constructor(props){
         super(props);
         
@@ -8,9 +12,9 @@ class Menu extends React.Component{
     componentDidMount(){
 
     }
-    
+
     render(){
-        return <div id="draggable" class="ui-widget-content">
+        return <div id={this.props.id} class="ui-widget-content">
             <p>Drag me around</p>
         </div>
     }

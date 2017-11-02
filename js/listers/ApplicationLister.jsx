@@ -1,4 +1,4 @@
-class ApplicationLister extends React.Component{
+    class ApplicationLister extends React.Component{
     constructor(props){
         super(props);
 

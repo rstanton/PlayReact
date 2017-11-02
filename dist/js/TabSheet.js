@@ -52,6 +52,15 @@ var TabSheet = function (_React$Component) {
                             { href: "#interfaces", "aria-controls": "interfaces", role: "tab", "data-toggle": "tab" },
                             "Interfaces"
                         )
+                    ),
+                    React.createElement(
+                        "li",
+                        { role: "presentation" },
+                        React.createElement(
+                            "a",
+                            { href: "#schemas", "aria-controls": "interfaces", role: "tab", "data-toggle": "tab" },
+                            "Objects"
+                        )
                     )
                 ),
                 React.createElement(
@@ -71,6 +80,12 @@ var TabSheet = function (_React$Component) {
                         "div",
                         { role: "tabpanel", className: "tab-pane", id: "interfaces" },
                         React.createElement(InterfaceLister, null)
+                    ),
+                    React.createElement(
+                        "div",
+                        { role: "tabpanel", className: "tab-pane", id: "schemas" },
+                        React.createElement(SchemaLister, null),
+                        React.createElement(NewSchemaForm, null)
                     )
                 )
             );

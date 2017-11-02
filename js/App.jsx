@@ -10,6 +10,7 @@ class App extends React.Component{
         //intialise database
         createIndex(diagramDB, diagramDDoc);
         createIndex(appDB, applicationDDoc);
+        createIndex(new PouchDB("schemas"), schemaDDoc)
     }
 
 
@@ -19,7 +20,7 @@ class App extends React.Component{
      */
     render(){
         return <div>
-            <NewApplicationDialog id={"AppModal"} body={"New Application"} modal={true}/>
+            <NewApplicationDialog reuse={false} id={"AppModal"} body={"New Application"} modal={true}/>
             <NewDiagramDialog id="diagramdialog" body="New Diagram" modal={true}/>
             <div className="container">
                 <TabSheet/>

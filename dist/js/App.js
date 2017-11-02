@@ -25,6 +25,7 @@ var App = function (_React$Component) {
         //intialise database
         createIndex(diagramDB, diagramDDoc);
         createIndex(appDB, applicationDDoc);
+        createIndex(new PouchDB("schemas"), schemaDDoc);
         return _this;
     }
 
@@ -40,7 +41,7 @@ var App = function (_React$Component) {
             return React.createElement(
                 "div",
                 null,
-                React.createElement(NewApplicationDialog, { id: "AppModal", body: "New Application", modal: true }),
+                React.createElement(NewApplicationDialog, { reuse: false, id: "AppModal", body: "New Application", modal: true }),
                 React.createElement(NewDiagramDialog, { id: "diagramdialog", body: "New Diagram", modal: true }),
                 React.createElement(
                     "div",

@@ -46,7 +46,7 @@ var Canvas = function (_React$Component) {
                 "div",
                 null,
                 React.createElement(IntDialog, { next: this.next.bind(this), modal: "true", id: "interfaceDialog", title: "Interfaces", body: "Interfaces Here" }),
-                React.createElement(NewApplicationDialog, { next: this.next.bind(this), modal: "true", id: "applicationDialog", title: "Applications", body: "Applications Here" }),
+                React.createElement(NewApplicationDialog, { reuse: true, next: this.next.bind(this), modal: "true", id: "applicationDialog", title: "Applications", body: "Applications Here" }),
                 React.createElement(
                     "div",
                     { id: this.props.id + "_container" },

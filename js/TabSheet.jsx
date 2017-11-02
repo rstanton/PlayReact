@@ -5,6 +5,7 @@ class TabSheet extends React.Component{
                 <li role="presentation"><a href="#diagrams" aria-controls="diagrams" role="tab" data-toggle="tab">Diagrams</a></li>
                 <li role="presentation"><a href="#applications" aria-controls="applications" role="tab" data-toggle="tab">Applications</a></li>
                 <li role="presentation"><a href="#interfaces" aria-controls="interfaces" role="tab" data-toggle="tab">Interfaces</a></li>
+                <li role="presentation"><a href="#schemas" aria-controls="interfaces" role="tab" data-toggle="tab">Objects</a></li>
             </ul>
 
             <div className="tab-content">
@@ -15,6 +16,10 @@ class TabSheet extends React.Component{
                     <ApplicationLister/>
                 </div>
                 <div role="tabpanel" className="tab-pane" id="interfaces"><InterfaceLister/></div>
+                <div role="tabpanel" className="tab-pane" id="schemas">
+                    <SchemaLister/>
+                    <NewSchemaForm/>
+                </div>
             </div>
         </div>
     }
