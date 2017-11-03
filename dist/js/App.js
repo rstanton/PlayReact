@@ -46,7 +46,7 @@ var App = function (_React$Component) {
                 React.createElement(
                     "div",
                     { className: "container" },
-                    React.createElement(TabSheet, null)
+                    React.createElement(DynamicTabSheet, null)
                 )
             );
         }

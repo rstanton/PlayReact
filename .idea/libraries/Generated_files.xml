@@ -9,6 +9,8 @@
         <item url="file://$PROJECT_DIR$/dist/js/App.js" />
         <item url="file://$PROJECT_DIR$/dist/js/listers/DiagramLister.js" />
         <item url="file://$PROJECT_DIR$/dist/js/listers/ApplicationLister.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/listers/GenericLister.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/DynamicTabSheet.js" />
         <item url="file://$PROJECT_DIR$/dist/js/forms/ReuseAppForm.js" />
         <item url="file://$PROJECT_DIR$/dist/js/dialogs/Menu.js" />
         <item url="file://$PROJECT_DIR$/dist/js/dialogs/NewDiagramDialog.js" />
@@ -82,6 +84,8 @@
       <root url="file://$PROJECT_DIR$/dist/js/App.js" />
       <root url="file://$PROJECT_DIR$/dist/js/listers/DiagramLister.js" />
       <root url="file://$PROJECT_DIR$/dist/js/listers/ApplicationLister.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/listers/GenericLister.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/DynamicTabSheet.js" />
       <root url="file://$PROJECT_DIR$/dist/js/forms/ReuseAppForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/Menu.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/NewDiagramDialog.js" />

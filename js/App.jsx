@@ -23,7 +23,7 @@ class App extends React.Component{
             <NewApplicationDialog reuse={false} id={"AppModal"} body={"New Application"} modal={true}/>
             <NewDiagramDialog id="diagramdialog" body="New Diagram" modal={true}/>
             <div className="container">
-                <TabSheet/>
+                <DynamicTabSheet/>
             </div>
         </div>;
     }
