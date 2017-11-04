@@ -44,12 +44,18 @@ class DynamicTabSheet extends React.Component{
                     tbs.push(<li key={key.key} role="presentation"><a href={"#"+key.key} aria-controls="diagrams" role="tab" data-toggle="tab">{key.key}</a></li>);
 
                     content = this.state.tabContent;
-                    content.push(<div key={key.key} role="tabpanel" className="tab-pane" id={key.key} data-objid={key.id}><GenericLister id={key.id}/></div>);
+                    content.push(<div key={key.key} role="tabpanel" className="tab-pane" id={key.key}>
+                        <GenericLister id={key.id}/>
+                    </div>);
 
                 }.bind(this));
 
                 tbs.push(<li key="schema" role="presentation"><a href={"#schema"} aria-controls="diagrams" role="tab" data-toggle="tab">Objects</a></li>);
                 content.push(<div key={"schema"} role="tabpanel" className="tab-pane" id="schema"><SchemaLister/><NewSchemaForm/></div>);
+
+                tbs.push(<li key="diagrams" role="presentation"><a href={"#diagrams"} aria-controls="diagrams" role="tab" data-toggle="tab">Diagrams</a></li>);
+                content.push(<div key="diagrams" role="tabpanel" className="tab-pane" id="diagrams"><DiagramLister/></div>);
+
                 this.setState({
                     tabs:tbs,
                     tabContent: content

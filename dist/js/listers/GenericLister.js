@@ -26,45 +26,91 @@ var GenericLister = function (_React$Component) {
         _this.componentDidMount = _this.componentDidMount.bind(_this);
         _this.getSchema = _this.getSchema.bind(_this);
         _this.getData = _this.getData.bind(_this);
+        _this.showDialog = _this.showDialog.bind(_this);
 
         _this.state = {
             head: [],
-            body: []
+            body: [],
+            dialog: ""
         };
-
-        _this.schema = {};
         return _this;
     }
 
     _createClass(GenericLister, [{
         key: "componentDidMount",
         value: function componentDidMount() {
-            //Reads the table header
+            //Reads the table header and passes the schema doc to 'getData'
             this.getSchema(this.getData);
         }
+
+        //@ToDo finish building table data rows
+
     }, {
         key: "getData",
-        value: function getData() {
-            var db = new PouchDB(this.schema.title);
+        value: function getData(schema) {
+            console.debug(JSON.stringify(schema));
 
-            db.query(this.schema.title + "/by_name", function (err, res) {
+            var db = new PouchDB(schema.title);
+
+            //execute the view to get the IDs of all the documents
+            db.query(schema.title + "/by_name", function (err, res) {
                 if (err) {
                     console.error(err);
                 } else {
-                    var td = [];
+                    var body = [];
+
+                    //Loop each record in the DB
+                    var key = 0;
+                    res.rows.map(function (doc) {
+                        console.debug("Processing Lister for " + JSON.stringify(doc));
+
+                        var obj = doc.key;
+                        var td = [];
+
+                        //@Todo, need to use the schema here -> we need to get the attributes of the document based on the fields in the schema, can't just iterate over the object as there maybe missing / null fields.
+                        for (var field in schema.properties) {
+                            console.debug("Processing " + schema.title + "." + field);
+
+                            td.push(React.createElement(
+                                "td",
+                                { key: schema.title + "." + field },
+                                eval("obj." + field)
+                            ));
+                        }
+
+                        body.push(React.createElement(
+                            "tr",
+                            { key: key },
+                            td,
+                            React.createElement("td", null)
+                        ));
+                        key++;
+                    });
+
+                    this.setState({
+                        body: body
+                    });
                 }
             }.bind(this));
         }
+
+        //Read the schema from the DB, display the table header and call on to next which should render the data table.
+
     }, {
         key: "getSchema",
         value: function getSchema(next) {
             var db = new PouchDB("schemas");
-            var schema = {};
+
             db.get(this.props.id, function (err, doc) {
+                var _this2 = this;
+
                 if (err) {
                     console.error(err);
                 } else {
-                    this.schema = doc;
+                    console.debug("Building Table Header for " + JSON.stringify(doc));
+
+                    //Setup a new dialog
+                    var dialog = React.createElement(GenericDialog, { id: "dialog" + doc._id, body: "New " + doc.title, modal: true, schema: doc });
 
                     var props = doc.properties;
 
@@ -77,13 +123,34 @@ var GenericLister = function (_React$Component) {
                         ));
                     }
 
+                    var button = React.createElement(
+                        "th",
+                        { key: "button" },
+                        React.createElement(
+                            "button",
+                            { onClick: function onClick() {
+                                    return _this2.showDialog("dialog" + doc._id);
+                                }, className: "btn btn-primary" },
+                            "New " + doc.title
+                        )
+                    );
+                    th.push(button);
+
                     this.setState({
-                        head: th
+                        head: th,
+                        dialog: dialog
                     });
                 }
-                //now populate the table
-                next();
+                //now populate the data table
+                next(doc);
             }.bind(this));
+        }
+    }, {
+        key: "showDialog",
+        value: function showDialog(id) {
+            console.debug("Showing dialog with ID " + id);
+
+            $("#" + id).dialog("open");
         }
     }, {
         key: "render",
@@ -91,6 +158,7 @@ var GenericLister = function (_React$Component) {
             return React.createElement(
                 "div",
                 null,
+                this.state.dialog,
                 React.createElement(
                     "table",
                     { className: "table table-striped" },

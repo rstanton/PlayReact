@@ -80,7 +80,7 @@ var DynamicTabSheet = function (_React$Component) {
                         content = this.state.tabContent;
                         content.push(React.createElement(
                             "div",
-                            { key: key.key, role: "tabpanel", className: "tab-pane", id: key.key, "data-objid": key.id },
+                            { key: key.key, role: "tabpanel", className: "tab-pane", id: key.key },
                             React.createElement(GenericLister, { id: key.id })
                         ));
                     }.bind(this));
@@ -100,6 +100,22 @@ var DynamicTabSheet = function (_React$Component) {
                         React.createElement(SchemaLister, null),
                         React.createElement(NewSchemaForm, null)
                     ));
+
+                    tbs.push(React.createElement(
+                        "li",
+                        { key: "diagrams", role: "presentation" },
+                        React.createElement(
+                            "a",
+                            { href: "#diagrams", "aria-controls": "diagrams", role: "tab", "data-toggle": "tab" },
+                            "Diagrams"
+                        )
+                    ));
+                    content.push(React.createElement(
+                        "div",
+                        { key: "diagrams", role: "tabpanel", className: "tab-pane", id: "diagrams" },
+                        React.createElement(DiagramLister, null)
+                    ));
+
                     this.setState({
                         tabs: tbs,
                         tabContent: content

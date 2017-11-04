@@ -9,7 +9,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var diagramDB;
-var appDB;
 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -20,29 +19,88 @@ var App = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
         diagramDB = new PouchDB("diagrams");
-        appDB = new PouchDB("applications");
 
-        //intialise database
-        createIndex(diagramDB, diagramDDoc);
-        createIndex(appDB, applicationDDoc);
-        createIndex(new PouchDB("schemas"), schemaDDoc);
+        _this.init = _this.init.bind(_this);
+        _this.createSchemaView = _this.createSchemaView.bind(_this);
+        _this.getSchemas = _this.getSchemas.bind(_this);
+
+        _this.init();
         return _this;
     }
 
     /**
-     * Adds the navigation, adds a hidden modal for new applications, shows the tabbed screen
-     * @returns {XML}
+     * This needs to read all the schemas and create the relevant views
      */
 
 
     _createClass(App, [{
+        key: "init",
+        value: function init() {
+            this.getSchemas(this.createSchemaView);
+        }
+
+        /**
+         * This retrieves all schemas....
+         * @ToDo move this to utility class so it can be re-used
+         * @param next
+         */
+
+    }, {
+        key: "getSchemas",
+        value: function getSchemas(next) {
+            var db = new PouchDB("schemas");
+
+            db.query("schemas/by_name", function (err, res) {
+                if (err) {
+                    console.error(err);
+                } else {
+                    res.rows.map(function (key) {
+                        next(key);
+                    });
+                }
+            }.bind(this));
+        }
+
+        /**
+         * Creates the actual views
+         * @param doc The schema 'by_name' results doc, contains 'key' (title of the schema eg 'Application') and 'id'
+         * @ToDo there is a bug here - we don't know the name of the field to export, should it just export the whole doc?
+         */
+
+    }, {
+        key: "createSchemaView",
+        value: function createSchemaView(doc) {
+            var db = new PouchDB(doc.key);
+
+            var designDoc = {
+                _id: '_design/' + doc.key,
+                views: {
+                    by_name: {
+                        map: function (doc) {
+                            emit(doc);
+                        }.toString()
+                    }
+                }
+            };
+
+            db.put(designDoc, function (err, doc) {
+                if (err) {
+                    if (err.status != 409) console.error(err);
+                } else console.log("Index for " + designDoc.key + " created.");
+            });
+        }
+
+        /**
+         * Adds the navigation, adds a hidden modal for new applications, shows the tabbed screen
+         * @returns {XML}
+         */
+
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
                 "div",
                 null,
-                React.createElement(NewApplicationDialog, { reuse: false, id: "AppModal", body: "New Application", modal: true }),
-                React.createElement(NewDiagramDialog, { id: "diagramdialog", body: "New Diagram", modal: true }),
                 React.createElement(
                     "div",
                     { className: "container" },

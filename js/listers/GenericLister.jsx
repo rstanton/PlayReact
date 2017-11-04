@@ -12,46 +12,75 @@ class GenericLister extends React.Component{
         this.componentDidMount = this.componentDidMount.bind(this);
         this.getSchema = this.getSchema.bind(this);
         this.getData = this.getData.bind(this);
+        this.showDialog = this.showDialog.bind(this);
 
         this.state = {
-            head:[],
-            body:[]
-        };
-
-        this.schema = {
-
+            head: [],
+            body: [],
+            dialog: ""
         };
     }
 
     componentDidMount(){
-        //Reads the table header
+        //Reads the table header and passes the schema doc to 'getData'
         this.getSchema(this.getData);
     }
 
-    getData(){
-        let db = new PouchDB(this.schema.title);
+    //@ToDo finish building table data rows
+    getData(schema){
+        console.debug(JSON.stringify(schema));
 
-        db.query(this.schema.title+"/by_name", function(err,res){
+        let db = new PouchDB(schema.title);
+
+
+        //execute the view to get the IDs of all the documents
+        db.query(schema.title+"/by_name", function(err,res){
             if(err){
                 console.error(err);
             }
             else{
-                let td = [];
+                let body = [];
 
+                //Loop each record in the DB
+                let key =0;
+                res.rows.map(function(doc){
+                    console.debug("Processing Lister for "+JSON.stringify(doc));
+
+                    let obj = doc.key;
+                    let td = [];
+
+                    //@Todo, need to use the schema here -> we need to get the attributes of the document based on the fields in the schema, can't just iterate over the object as there maybe missing / null fields.
+                    for(let field in schema.properties){
+                        console.debug("Processing "+schema.title+"."+field);
+
+                        td.push(<td key={schema.title+"."+field}>{eval("obj."+field)}</td>);
+                    }
+
+                    body.push(<tr key={key}>{td}<td></td></tr>);
+                    key++;
+                });
+
+                this.setState({
+                    body:body
+                });
             }
         }.bind(this));
     }
 
 
+    //Read the schema from the DB, display the table header and call on to next which should render the data table.
     getSchema(next){
         let db = new PouchDB("schemas");
-        let schema = {};
+
         db.get(this.props.id, function(err, doc){
             if(err){
                 console.error(err);
             }
             else{
-                this.schema = doc;
+                console.debug("Building Table Header for "+JSON.stringify(doc));
+
+                //Setup a new dialog
+                let dialog = <GenericDialog id={"dialog"+doc._id} body={"New "+doc.title} modal={true} schema={doc}/>;
 
                 let props = doc.properties;
 
@@ -60,21 +89,31 @@ class GenericLister extends React.Component{
                     th.push(<th key={x}>{x}</th>);
                 }
 
+                let button = <th key="button"><button onClick={() => this.showDialog("dialog"+doc._id)} className="btn btn-primary">{"New "+doc.title}</button></th>;
+                th.push(button);
+
                 this.setState({
-                    head:th
+                    head:th,
+                    dialog:dialog
                 });
             }
-            //now populate the table
-            next();
+            //now populate the data table
+            next(doc);
         }.bind(this));
+    }
 
+    showDialog(id){
+        console.debug("Showing dialog with ID "+id);
+
+        $("#"+id).dialog("open");
     }
 
     render(){
         return <div>
+            {this.state.dialog}
             <table className="table table-striped">
                 <thead>
-                    <tr>{this.state.head}</tr>
+                <tr>{this.state.head}</tr>
                 </thead>
                 <tbody>
                 {this.state.body}
