@@ -1,5 +1,11 @@
 var diagramDB;
 
+/**
+ * This is the entry point to the 'admin' application
+ *
+ * @ToDo - Rethink the relationship model, It doesn't have the same logic as plain objects, so needs it's own management.
+ * @ToDo - diagrams, do they start as objects?
+ */
 class App extends React.Component{
     constructor(props){
         super(props);
@@ -23,7 +29,7 @@ class App extends React.Component{
 
     /**
      * This retrieves all schemas....
-     * @ToDo move this to utility class so it can be re-used
+     * @ToDo move this to utility class so it can be re-used?
      * @param next
      */
     getSchemas(next) {
@@ -44,7 +50,6 @@ class App extends React.Component{
     /**
      * Creates the actual views
      * @param doc The schema 'by_name' results doc, contains 'key' (title of the schema eg 'Application') and 'id'
-     * @ToDo there is a bug here - we don't know the name of the field to export, should it just export the whole doc?
      */
     createSchemaView(doc){
         let db = new PouchDB(doc.key);

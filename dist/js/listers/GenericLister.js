@@ -27,6 +27,7 @@ var GenericLister = function (_React$Component) {
         _this.getSchema = _this.getSchema.bind(_this);
         _this.getData = _this.getData.bind(_this);
         _this.showDialog = _this.showDialog.bind(_this);
+        _this.delete = _this.delete.bind(_this);
 
         _this.state = {
             head: [],
@@ -62,15 +63,15 @@ var GenericLister = function (_React$Component) {
                     //Loop each record in the DB
                     var key = 0;
                     res.rows.map(function (doc) {
-                        console.debug("Processing Lister for " + JSON.stringify(doc));
+                        var _this2 = this;
+
+                        console.debug(schema.title + ", Processing Lister for " + JSON.stringify(doc));
 
                         var obj = doc.key;
                         var td = [];
 
                         //@Todo, need to use the schema here -> we need to get the attributes of the document based on the fields in the schema, can't just iterate over the object as there maybe missing / null fields.
                         for (var field in schema.properties) {
-                            console.debug("Processing " + schema.title + "." + field);
-
                             td.push(React.createElement(
                                 "td",
                                 { key: schema.title + "." + field },
@@ -82,15 +83,37 @@ var GenericLister = function (_React$Component) {
                             "tr",
                             { key: key },
                             td,
-                            React.createElement("td", null)
+                            React.createElement(
+                                "td",
+                                null,
+                                React.createElement("span", { onClick: function onClick() {
+                                        return _this2.delete(schema, doc.id);
+                                    }, className: "glyphicon glyphicon-trash", "aria-hidden": "true" })
+                            )
                         ));
                         key++;
-                    });
+                    }.bind(this));
 
                     this.setState({
                         body: body
                     });
                 }
+            }.bind(this));
+        }
+    }, {
+        key: "delete",
+        value: function _delete(schema, id) {
+            console.debug("Delete " + schema.title + " with ID " + id);
+            var db = new PouchDB(schema.title);
+
+            db.get(id, function (err, doc) {
+                db.remove(doc, function (err, response) {
+                    if (err) console.error(err);
+
+                    db.close();
+
+                    this.getData(schema);
+                }.bind(this));
             }.bind(this));
         }
 
@@ -102,7 +125,7 @@ var GenericLister = function (_React$Component) {
             var db = new PouchDB("schemas");
 
             db.get(this.props.id, function (err, doc) {
-                var _this2 = this;
+                var _this3 = this;
 
                 if (err) {
                     console.error(err);
@@ -110,7 +133,7 @@ var GenericLister = function (_React$Component) {
                     console.debug("Building Table Header for " + JSON.stringify(doc));
 
                     //Setup a new dialog
-                    var dialog = React.createElement(GenericDialog, { id: "dialog" + doc._id, body: "New " + doc.title, modal: true, schema: doc });
+                    var dialog = React.createElement(GenericDialog, { next: this.getData, id: "dialog" + doc._id, body: "New " + doc.title, modal: true, schema: doc });
 
                     var props = doc.properties;
 
@@ -129,7 +152,7 @@ var GenericLister = function (_React$Component) {
                         React.createElement(
                             "button",
                             { onClick: function onClick() {
-                                    return _this2.showDialog("dialog" + doc._id);
+                                    return _this3.showDialog("dialog" + doc._id);
                                 }, className: "btn btn-primary" },
                             "New " + doc.title
                         )

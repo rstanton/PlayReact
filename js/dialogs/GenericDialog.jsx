@@ -1,5 +1,5 @@
 /**
- * @ToDo This needs to conditionally show the 're-use' tab as it's not valid for a new application scenario
+ * @ToDo Should split the reuse functionality into another component
  */
 class GenericDialog extends Dialog{
     constructor(props) {
@@ -70,9 +70,12 @@ class GenericDialog extends Dialog{
     /**
      * Saves the object to the database
      * @param event
+     * @ToDo validate state against the JSON Schema object and respond accordingly
      */
     handleSubmit(event){
         event.preventDefault();
+
+        console.debug("Saving "+this.props.schema.title+" with "+JSON.stringify(this.state));
 
         let db = new PouchDB(this.props.schema.title);
 
@@ -83,8 +86,14 @@ class GenericDialog extends Dialog{
             else {
                 $("#dialog" + this.props.schema._id).dialog("close");
             }
+
+
+            this.setState();
+
+            //If a next action is specified then execute, passing the schema object forward
+            if(this.props.next)
+                this.props.next(this.props.schema);
+
         }.bind(this));
-
-
     }
 }

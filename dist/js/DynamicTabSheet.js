@@ -65,7 +65,10 @@ var DynamicTabSheet = function (_React$Component) {
                 } else {
                     var tbs = [];
                     var content = [];
+
+                    //Loop each of the Schema objects returned from the Schema DB query
                     res.rows.map(function (key) {
+                        //Add a tab
                         tbs = this.state.tabs;
                         tbs.push(React.createElement(
                             "li",
@@ -77,6 +80,7 @@ var DynamicTabSheet = function (_React$Component) {
                             )
                         ));
 
+                        //add tab content
                         content = this.state.tabContent;
                         content.push(React.createElement(
                             "div",

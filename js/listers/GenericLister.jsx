@@ -13,6 +13,7 @@ class GenericLister extends React.Component{
         this.getSchema = this.getSchema.bind(this);
         this.getData = this.getData.bind(this);
         this.showDialog = this.showDialog.bind(this);
+        this.delete = this.delete.bind(this);
 
         this.state = {
             head: [],
@@ -44,26 +45,40 @@ class GenericLister extends React.Component{
                 //Loop each record in the DB
                 let key =0;
                 res.rows.map(function(doc){
-                    console.debug("Processing Lister for "+JSON.stringify(doc));
+                    console.debug(schema.title+", Processing Lister for "+JSON.stringify(doc));
 
                     let obj = doc.key;
                     let td = [];
 
                     //@Todo, need to use the schema here -> we need to get the attributes of the document based on the fields in the schema, can't just iterate over the object as there maybe missing / null fields.
                     for(let field in schema.properties){
-                        console.debug("Processing "+schema.title+"."+field);
-
                         td.push(<td key={schema.title+"."+field}>{eval("obj."+field)}</td>);
                     }
 
-                    body.push(<tr key={key}>{td}<td></td></tr>);
+                    body.push(<tr key={key}>{td}<td><span onClick={() => this.delete(schema, doc.id)} className="glyphicon glyphicon-trash" aria-hidden="true"></span></td></tr>);
                     key++;
-                });
+                }.bind(this));
 
                 this.setState({
                     body:body
                 });
             }
+        }.bind(this));
+    }
+
+    delete(schema, id){
+        console.debug("Delete "+schema.title+" with ID "+id);
+        let db = new PouchDB(schema.title);
+
+        db.get(id, function(err, doc){
+            db.remove(doc, function(err, response){
+                if(err)
+                    console.error(err);
+
+                db.close();
+
+                this.getData(schema);
+            }.bind(this));
         }.bind(this));
     }
 
@@ -80,7 +95,7 @@ class GenericLister extends React.Component{
                 console.debug("Building Table Header for "+JSON.stringify(doc));
 
                 //Setup a new dialog
-                let dialog = <GenericDialog id={"dialog"+doc._id} body={"New "+doc.title} modal={true} schema={doc}/>;
+                let dialog = <GenericDialog next={this.getData} id={"dialog"+doc._id} body={"New "+doc.title} modal={true} schema={doc}/>;
 
                 let props = doc.properties;
 

@@ -11,7 +11,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * @ToDo This needs to conditionally show the 're-use' tab as it's not valid for a new application scenario
+ * @ToDo Should split the reuse functionality into another component
  */
 var GenericDialog = function (_Dialog) {
     _inherits(GenericDialog, _Dialog);
@@ -148,12 +148,15 @@ var GenericDialog = function (_Dialog) {
         /**
          * Saves the object to the database
          * @param event
+         * @ToDo validate state against the JSON Schema object and respond accordingly
          */
 
     }, {
         key: "handleSubmit",
         value: function handleSubmit(event) {
             event.preventDefault();
+
+            console.debug("Saving " + this.props.schema.title + " with " + JSON.stringify(this.state));
 
             var db = new PouchDB(this.props.schema.title);
 
@@ -163,6 +166,11 @@ var GenericDialog = function (_Dialog) {
                 } else {
                     $("#dialog" + this.props.schema._id).dialog("close");
                 }
+
+                this.setState();
+
+                //If a next action is specified then execute, passing the schema object forward
+                if (this.props.next) this.props.next(this.props.schema);
             }.bind(this));
         }
     }]);

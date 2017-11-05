@@ -39,10 +39,14 @@ class DynamicTabSheet extends React.Component{
             else{
                 let tbs = [];
                 let content = [];
+
+                //Loop each of the Schema objects returned from the Schema DB query
                 res.rows.map(function(key){
+                    //Add a tab
                     tbs = this.state.tabs;
                     tbs.push(<li key={key.key} role="presentation"><a href={"#"+key.key} aria-controls="diagrams" role="tab" data-toggle="tab">{key.key}</a></li>);
 
+                    //add tab content
                     content = this.state.tabContent;
                     content.push(<div key={key.key} role="tabpanel" className="tab-pane" id={key.key}>
                         <GenericLister id={key.id}/>
