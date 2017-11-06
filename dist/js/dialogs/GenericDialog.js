@@ -55,16 +55,37 @@ var GenericDialog = function (_Dialog) {
             ));
 
             for (var x in props) {
-                inputFields.push(React.createElement(
-                    "div",
-                    { key: x },
-                    React.createElement(
-                        "label",
-                        { htmlFor: "input" + x },
-                        x
-                    ),
-                    React.createElement("input", { type: "text", onChange: this.handleChange, className: "form-control", placeholder: "input " + x, id: "input" + x, "data-title": x })
-                ));
+                console.debug("Building Input Type for: " + x);
+                console.debug(eval("props." + x + ".type"));
+
+                if (eval("props." + x + ".type").localeCompare("string") == 0) {
+                    inputFields.push(React.createElement(
+                        "div",
+                        { key: x },
+                        React.createElement(
+                            "label",
+                            { htmlFor: "input" + x },
+                            x
+                        ),
+                        React.createElement("input", { type: "text",
+                            onChange: this.handleChange,
+                            className: "form-control",
+                            placeholder: "input " + x,
+                            id: "input" + x,
+                            "data-title": x })
+                    ));
+                } else {
+                    inputFields.push(React.createElement(
+                        "div",
+                        { key: x },
+                        React.createElement(
+                            "label",
+                            { htmlFor: "input" + x },
+                            x
+                        ),
+                        React.createElement(GenericObjectLister, null)
+                    ));
+                }
             }
 
             var dialog = React.createElement(

@@ -25,13 +25,17 @@ var App = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-        diagramDB = new PouchDB("diagrams");
+        diagramDB = new PouchDB(DIAGRAM_DB);
 
         _this.init = _this.init.bind(_this);
         _this.createSchemaView = _this.createSchemaView.bind(_this);
-        _this.getSchemas = _this.getSchemas.bind(_this);
 
         _this.init();
+
+        _this.state = {
+            view: ""
+        };
+
         return _this;
     }
 
@@ -43,26 +47,28 @@ var App = function (_React$Component) {
     _createClass(App, [{
         key: "init",
         value: function init() {
-            this.getSchemas(this.createSchemaView);
-        }
+            var db = new PouchDB(SCHEMA_DB);
 
-        /**
-         * This retrieves all schemas....
-         * @ToDo move this to utility class so it can be re-used?
-         * @param next
-         */
+            db.info(function (err, info) {
+                if (info.doc_count == 0 && info.update_seq == 0) {
 
-    }, {
-        key: "getSchemas",
-        value: function getSchemas(next) {
-            var db = new PouchDB("schemas");
+                    //Hacky, but create the view for the Schema DB
+                    this.createSchemaView({ title: "Schema" });
 
-            db.query("schemas/by_name", function (err, res) {
-                if (err) {
-                    console.error(err);
+                    //For each of the out of the box schemas
+                    baseSchemas.map(function (schema) {
+                        console.log("Creating DB and View for " + schema.title);
+
+                        //Create the schema record
+                        db.post(schema, function (err, doc) {
+                            //create the map/reduce view
+                            this.createSchemaView(schema);
+                        }.bind(this));
+                    }.bind(this));
                 } else {
-                    res.rows.map(function (key) {
-                        next(key);
+                    //Database already exists, nothing to do, just show the tabs
+                    this.setState({
+                        view: React.createElement(DynamicTabSheet, null)
                     });
                 }
             }.bind(this));
@@ -75,11 +81,11 @@ var App = function (_React$Component) {
 
     }, {
         key: "createSchemaView",
-        value: function createSchemaView(doc) {
-            var db = new PouchDB(doc.key);
+        value: function createSchemaView(schema) {
+            var db = new PouchDB(schema.title);
 
             var designDoc = {
-                _id: '_design/' + doc.key,
+                _id: '_design/' + schema.title,
                 views: {
                     by_name: {
                         map: function (doc) {
@@ -89,11 +95,17 @@ var App = function (_React$Component) {
                 }
             };
 
-            db.put(designDoc, function (err, doc) {
+            db.put(designDoc, function (err, resp) {
                 if (err) {
                     if (err.status != 409) console.error(err);
-                } else console.log("Index for " + designDoc.key + " created.");
-            });
+                } else {
+                    console.log("Index for " + schema.title + " created.");
+
+                    this.setState({
+                        view: React.createElement(DynamicTabSheet, null)
+                    });
+                }
+            }.bind(this));
         }
 
         /**
@@ -110,7 +122,7 @@ var App = function (_React$Component) {
                 React.createElement(
                     "div",
                     { className: "container" },
-                    React.createElement(DynamicTabSheet, null)
+                    this.state.view
                 )
             );
         }

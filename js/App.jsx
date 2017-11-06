@@ -10,13 +10,17 @@ class App extends React.Component{
     constructor(props){
         super(props);
 
-        diagramDB = new PouchDB("diagrams");
+        diagramDB = new PouchDB(DIAGRAM_DB);
 
         this.init = this.init.bind(this);
         this.createSchemaView = this.createSchemaView.bind(this);
-        this.getSchemas = this.getSchemas.bind(this);
 
         this.init();
+
+        this.state = {
+            view: ""
+        }
+
     }
 
 
@@ -24,24 +28,29 @@ class App extends React.Component{
      * This needs to read all the schemas and create the relevant views
      */
     init(){
-        this.getSchemas(this.createSchemaView);
-    }
+        let db = new PouchDB(SCHEMA_DB);
 
-    /**
-     * This retrieves all schemas....
-     * @ToDo move this to utility class so it can be re-used?
-     * @param next
-     */
-    getSchemas(next) {
-        let db = new PouchDB("schemas");
+        db.info(function(err, info){
+            if(info.doc_count==0 && info.update_seq==0){
 
-        db.query("schemas/by_name", function (err, res) {
-            if (err) {
-                console.error(err);
+                //Hacky, but create the view for the Schema DB
+                this.createSchemaView({title:"Schema"});
+
+                //For each of the out of the box schemas
+                baseSchemas.map(function(schema){
+                    console.log("Creating DB and View for "+schema.title);
+
+                    //Create the schema record
+                    db.post(schema, function(err, doc){
+                        //create the map/reduce view
+                        this.createSchemaView(schema);
+                    }.bind(this));
+                }.bind(this));
+
             }
-            else {
-                res.rows.map(function(key){
-                    next(key);
+            else{ //Database already exists, nothing to do, just show the tabs
+                this.setState({
+                    view:<DynamicTabSheet/>
                 });
             }
         }.bind(this));
@@ -51,11 +60,11 @@ class App extends React.Component{
      * Creates the actual views
      * @param doc The schema 'by_name' results doc, contains 'key' (title of the schema eg 'Application') and 'id'
      */
-    createSchemaView(doc){
-        let db = new PouchDB(doc.key);
+    createSchemaView(schema){
+        let db = new PouchDB(schema.title);
 
         var designDoc = {
-            _id:'_design/'+doc.key,
+            _id:'_design/'+schema.title,
             views:{
                 by_name:{
                     map:function(doc) {
@@ -65,15 +74,19 @@ class App extends React.Component{
             }
         };
 
-        db.put(designDoc, function(err, doc){
+        db.put(designDoc, function(err, resp){
             if(err) {
                 if (err.status != 409)
                     console.error(err);
             }
-            else
-                console.log("Index for "+designDoc.key+" created.");
-        });
-
+            else {
+                console.log("Index for " + schema.title + " created.");
+                
+                this.setState({
+                    view: <DynamicTabSheet/>
+                });
+            }
+        }.bind(this));
     }
 
 
@@ -84,7 +97,7 @@ class App extends React.Component{
     render(){
         return <div>
             <div className="container">
-                <DynamicTabSheet/>
+                {this.state.view}
             </div>
         </div>;
     }

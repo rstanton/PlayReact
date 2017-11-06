@@ -18,6 +18,7 @@ var SchemaLister = function (_React$Component) {
 
         _this.getSchemas = _this.getSchemas.bind(_this);
         _this.componentDidMount = _this.componentDidMount.bind(_this);
+        _this.delete = _this.delete.bind(_this);
 
         _this.state = {
             schemas: []
@@ -33,14 +34,15 @@ var SchemaLister = function (_React$Component) {
     }, {
         key: "getSchemas",
         value: function getSchemas() {
-            var db = new PouchDB("schemas");
+            var db = new PouchDB(SCHEMA_DB);
             this.setState({
                 schemas: []
             });
 
-            db.query("schemas/by_name", function (err, res) {
+            db.query("Schema/by_name", function (err, res) {
                 if (err) console.error(err);else {
                     var list = [];
+
                     list = res.rows.map(function (obj) {
                         return obj.id;
                     });
@@ -54,8 +56,11 @@ var SchemaLister = function (_React$Component) {
                             var x = _step.value;
 
                             db.get(x, function (err, doc) {
+                                var _this2 = this;
+
                                 if (err) console.error(err);else {
                                     var arr = this.state.schemas;
+                                    //@Todo all delete option
                                     arr.push(React.createElement(
                                         "tr",
                                         { key: doc._id },
@@ -74,7 +79,13 @@ var SchemaLister = function (_React$Component) {
                                             null,
                                             React.createElement("textarea", { readOnly: true, rows: "10", cols: "80", defaultValue: JSON.stringify(doc, undefined, 2) })
                                         ),
-                                        React.createElement("td", null)
+                                        React.createElement(
+                                            "td",
+                                            null,
+                                            React.createElement("span", { onClick: function onClick() {
+                                                    return _this2.delete(doc._id);
+                                                }, className: "glyphicon glyphicon-trash", "aria-hidden": "true" })
+                                        )
                                     ));
 
                                     this.setState({
@@ -97,15 +108,29 @@ var SchemaLister = function (_React$Component) {
                             }
                         }
                     }
-
-                    db.close();
                 }
+            }.bind(this));
+        }
+
+        //@Todo - the delete function should be generic cross all objects, no need to keep re-writing
+
+    }, {
+        key: "delete",
+        value: function _delete(id) {
+            console.debug("Deleting Schema with ID " + id);
+
+            var db = new PouchDB(SCHEMA_DB);
+
+            db.get(id, function (err, doc) {
+                db.remove(doc, function (err, resposne) {
+                    if (!err) this.props.next();
+                }.bind(this));
             }.bind(this));
         }
     }, {
         key: "render",
         value: function render() {
-            var _this2 = this;
+            var _this3 = this;
 
             var view = React.createElement(
                 "div",
@@ -138,11 +163,8 @@ var SchemaLister = function (_React$Component) {
                                 "th",
                                 null,
                                 React.createElement("span", { onClick: function onClick() {
-                                        return _this2.getSchemas();
-                                    }, className: "glyphicon glyphicon-refresh", "aria-hidden": "true" }),
-                                React.createElement("span", { onClick: function onClick() {
-                                        return _this2.showDialog();
-                                    }, className: "glyphicon glyphicon-plus-sign", "aria-hidden": "true" })
+                                        return _this3.getSchemas();
+                                    }, className: "glyphicon glyphicon-refresh", "aria-hidden": "true" })
                             )
                         )
                     ),

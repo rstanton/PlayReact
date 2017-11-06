@@ -34,7 +34,7 @@ class GenericLister extends React.Component{
         let db = new PouchDB(schema.title);
 
 
-        //execute the view to get the IDs of all the documents
+        //The view now returns all of the documents (not the IDs)
         db.query(schema.title+"/by_name", function(err,res){
             if(err){
                 console.error(err);
@@ -45,17 +45,25 @@ class GenericLister extends React.Component{
                 //Loop each record in the DB
                 let key =0;
                 res.rows.map(function(doc){
-                    console.debug(schema.title+", Processing Lister for "+JSON.stringify(doc));
+                    console.debug(schema.title+", Processing Lister for "+JSON.stringify(doc.key));
 
                     let obj = doc.key;
                     let td = [];
 
                     //@Todo, need to use the schema here -> we need to get the attributes of the document based on the fields in the schema, can't just iterate over the object as there maybe missing / null fields.
                     for(let field in schema.properties){
+                        console.debug("Processing "+ JSON.stringify(field));
+
                         td.push(<td key={schema.title+"."+field}>{eval("obj."+field)}</td>);
                     }
 
-                    body.push(<tr key={key}>{td}<td><span onClick={() => this.delete(schema, doc.id)} className="glyphicon glyphicon-trash" aria-hidden="true"></span></td></tr>);
+                    //
+                    body.push(<tr key={key}>
+                        {td}
+                        <td>
+                            <span onClick={() => this.delete(schema, doc.id)} className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </td></tr>);
+
                     key++;
                 }.bind(this));
 
@@ -66,6 +74,12 @@ class GenericLister extends React.Component{
         }.bind(this));
     }
 
+    /**
+     * Remove the object from the DB associated with the Schema
+     *
+     * @param schema
+     * @param id
+     */
     delete(schema, id){
         console.debug("Delete "+schema.title+" with ID "+id);
         let db = new PouchDB(schema.title);
@@ -75,17 +89,19 @@ class GenericLister extends React.Component{
                 if(err)
                     console.error(err);
 
-                db.close();
-
                 this.getData(schema);
             }.bind(this));
         }.bind(this));
     }
 
 
-    //Read the schema from the DB, display the table header and call on to next which should render the data table.
+    /**
+     * Read the schema from the DB, display the table header and call on to next which should render the data table.
+     *
+     * @param next
+     */
     getSchema(next){
-        let db = new PouchDB("schemas");
+        let db = new PouchDB(SCHEMA_DB);
 
         db.get(this.props.id, function(err, doc){
             if(err){

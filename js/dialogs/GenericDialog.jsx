@@ -26,7 +26,23 @@ class GenericDialog extends Dialog{
         inputFields.push(<p key={"label"}>Create a new {this.props.schema.title}</p>)
 
         for(let x in props){
-            inputFields.push(<div key={x}><label htmlFor={"input"+x}>{x}</label><input type="text" onChange={this.handleChange} className="form-control" placeholder={"input "+x} id={"input"+x} data-title={x}/></div>);
+            console.debug("Building Input Type for: "+x);
+            console.debug(eval("props."+x+".type"));
+
+            if(eval("props."+x+".type").localeCompare("string")==0) {
+                inputFields.push(<div key={x}><label htmlFor={"input" + x}>{x}</label><input type="text"
+                                                                                             onChange={this.handleChange}
+                                                                                             className="form-control"
+                                                                                             placeholder={"input " + x}
+                                                                                             id={"input" + x}
+                                                                                             data-title={x}/></div>);
+            }
+            else{
+                inputFields.push(<div key={x}>
+                    <label htmlFor={"input" + x}>{x}</label>
+                    <GenericObjectLister/>
+                </div>);
+            }
         }
 
         let dialog = <div id={this.props.id}>

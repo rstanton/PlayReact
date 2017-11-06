@@ -17,6 +17,7 @@ var DynamicTabSheet = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (DynamicTabSheet.__proto__ || Object.getPrototypeOf(DynamicTabSheet)).call(this, props));
 
         _this.componentDidMount = _this.componentDidMount.bind(_this);
+        _this.getObjectTypes = _this.getObjectTypes.bind(_this);
 
         //tabs the HTML for the tabs, and tabContent the HTML for the tab bodies
         _this.state = {
@@ -57,9 +58,14 @@ var DynamicTabSheet = function (_React$Component) {
     }, {
         key: "getObjectTypes",
         value: function getObjectTypes() {
-            var db = new PouchDB("schemas");
+            var db = new PouchDB(SCHEMA_DB);
 
-            db.query("schemas/by_name", function (err, res) {
+            this.setState({
+                tabs: [],
+                tabContent: []
+            });
+
+            db.query("Schema/by_name", function (err, res) {
                 if (err) {
                     console.error(err);
                 } else {
@@ -67,16 +73,18 @@ var DynamicTabSheet = function (_React$Component) {
                     var content = [];
 
                     //Loop each of the Schema objects returned from the Schema DB query
-                    res.rows.map(function (key) {
+                    res.rows.map(function (schema) {
+                        console.debug("Creating Sheet for " + JSON.stringify(schema));
+
                         //Add a tab
                         tbs = this.state.tabs;
                         tbs.push(React.createElement(
                             "li",
-                            { key: key.key, role: "presentation" },
+                            { key: schema.key._id, role: "presentation" },
                             React.createElement(
                                 "a",
-                                { href: "#" + key.key, "aria-controls": "diagrams", role: "tab", "data-toggle": "tab" },
-                                key.key
+                                { href: "#" + schema.key._id, "aria-controls": "diagrams", role: "tab", "data-toggle": "tab" },
+                                schema.key.title
                             )
                         ));
 
@@ -84,8 +92,8 @@ var DynamicTabSheet = function (_React$Component) {
                         content = this.state.tabContent;
                         content.push(React.createElement(
                             "div",
-                            { key: key.key, role: "tabpanel", className: "tab-pane", id: key.key },
-                            React.createElement(GenericLister, { id: key.id })
+                            { key: schema.key._id, role: "tabpanel", className: "tab-pane", id: schema.key._id },
+                            React.createElement(GenericLister, { id: schema.key._id, next: this.getObjectTypes })
                         ));
                     }.bind(this));
 
@@ -101,24 +109,12 @@ var DynamicTabSheet = function (_React$Component) {
                     content.push(React.createElement(
                         "div",
                         { key: "schema", role: "tabpanel", className: "tab-pane", id: "schema" },
-                        React.createElement(SchemaLister, null),
-                        React.createElement(NewSchemaForm, null)
+                        React.createElement(SchemaLister, { next: this.getObjectTypes }),
+                        React.createElement(NewSchemaForm, { next: this.getObjectTypes })
                     ));
 
-                    tbs.push(React.createElement(
-                        "li",
-                        { key: "diagrams", role: "presentation" },
-                        React.createElement(
-                            "a",
-                            { href: "#diagrams", "aria-controls": "diagrams", role: "tab", "data-toggle": "tab" },
-                            "Diagrams"
-                        )
-                    ));
-                    content.push(React.createElement(
-                        "div",
-                        { key: "diagrams", role: "tabpanel", className: "tab-pane", id: "diagrams" },
-                        React.createElement(DiagramLister, null)
-                    ));
+                    /**                tbs.push(<li key="diagrams" role="presentation"><a href={"#diagrams"} aria-controls="diagrams" role="tab" data-toggle="tab">Diagrams</a></li>);
+                                    content.push(<div key="diagrams" role="tabpanel" className="tab-pane" id="diagrams"><DiagramLister/></div>);*/
 
                     this.setState({
                         tabs: tbs,
