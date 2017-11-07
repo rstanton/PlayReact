@@ -37,19 +37,9 @@ var GenericObjectLister = function (_React$Component) {
         key: "render",
         value: function render() {
             return React.createElement(
-                "div",
-                { className: "dropdown" },
-                React.createElement(
-                    "button",
-                    { className: "btn btn-default dropdown-toggle", type: "button", id: "dropdownMenu1", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "true" },
-                    "Object",
-                    React.createElement("span", { className: "caret" })
-                ),
-                React.createElement(
-                    "ul",
-                    { className: "dropdown-menu", "aria-labelledby": "dropdownMenu1" },
-                    this.state.list
-                )
+                "select",
+                { id: this.props.id, onChange: this.props.onChange, className: "form-control" },
+                this.state.list
             );
         }
     }, {
@@ -59,21 +49,23 @@ var GenericObjectLister = function (_React$Component) {
 
             db.query(SCHEMA_VIEW, function (err, res) {
                 if (err) console.error(err);else {
-                    console.debug("Generic Object Lister got " + JSON.stringify(res));
+
                     var list = [];
+
+                    list.push(React.createElement(
+                        "option",
+                        { key: "default", selected: true },
+                        "Choose"
+                    ));
+
                     res.rows.map(function (row) {
-                        console.debug("Building Object Lister for " + JSON.stringify(row.key));
 
                         list.push(React.createElement(
-                            "li",
-                            { key: row.key.title },
-                            React.createElement(
-                                "a",
-                                { href: "#" },
-                                row.key.title
-                            )
+                            "option",
+                            { key: row.key.title, "data-schema": JSON.stringify(row.key) },
+                            row.key.title
                         ));
-                    });
+                    }.bind(this));
 
                     this.setState({
                         list: list

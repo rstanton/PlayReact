@@ -18,15 +18,9 @@ class GenericObjectLister extends React.Component{
     }
 
     render(){
-        return <div className="dropdown">
-            <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Object
-                <span className="caret"></span>
-            </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
+        return <select id={this.props.id} onChange={this.props.onChange} className="form-control">
                 {this.state.list}
-            </ul>
-        </div>
+            </select>;
     }
 
     getData(){
@@ -36,13 +30,15 @@ class GenericObjectLister extends React.Component{
             if(err)
                 console.error(err);
             else {
-                console.debug("Generic Object Lister got "+JSON.stringify(res));
-                let list = [];
-                res.rows.map(function (row) {
-                    console.debug("Building Object Lister for " + JSON.stringify(row.key));
 
-                    list.push(<li key={row.key.title}><a href="#">{row.key.title}</a></li>);
-                });
+                let list = [];
+
+                list.push(<option key={"default"} selected>Choose</option>);
+
+                res.rows.map(function (row) {
+
+                    list.push(<option key={row.key.title} data-schema={JSON.stringify(row.key)}>{row.key.title}</option>);
+                }.bind(this));
 
                 this.setState({
                     list:list
@@ -50,6 +46,4 @@ class GenericObjectLister extends React.Component{
             }
         }.bind(this));
     }
-
-
 }

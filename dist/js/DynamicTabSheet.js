@@ -106,6 +106,8 @@ var DynamicTabSheet = function (_React$Component) {
                             "Objects"
                         )
                     ));
+
+                    //@ToDo a change in new schema form needs to update the GenericObjectLister data list... why doesnt it!?
                     content.push(React.createElement(
                         "div",
                         { key: "schema", role: "tabpanel", className: "tab-pane", id: "schema" },
@@ -113,8 +115,8 @@ var DynamicTabSheet = function (_React$Component) {
                         React.createElement(NewSchemaForm, { next: this.getObjectTypes })
                     ));
 
-                    /**                tbs.push(<li key="diagrams" role="presentation"><a href={"#diagrams"} aria-controls="diagrams" role="tab" data-toggle="tab">Diagrams</a></li>);
-                                    content.push(<div key="diagrams" role="tabpanel" className="tab-pane" id="diagrams"><DiagramLister/></div>);*/
+                    /**tbs.push(<li key="diagrams" role="presentation"><a href={"#diagrams"} aria-controls="diagrams" role="tab" data-toggle="tab">Diagrams</a></li>);
+                    content.push(<div key="diagrams" role="tabpanel" className="tab-pane" id="diagrams"><DiagramLister/></div>);**/
 
                     this.setState({
                         tabs: tbs,

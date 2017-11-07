@@ -23,12 +23,10 @@ class GenericDialog extends Dialog{
         let inputFields = [];
         let props = this.props.schema.properties;
 
-        inputFields.push(<p key={"label"}>Create a new {this.props.schema.title}</p>)
+        //inputFields.push(<p key={"label"}>Create a new {this.props.schema.title}</p>)
 
+        //@Todo this needs to support enumerations as well as objects
         for(let x in props){
-            console.debug("Building Input Type for: "+x);
-            console.debug(eval("props."+x+".type"));
-
             if(eval("props."+x+".type").localeCompare("string")==0) {
                 inputFields.push(<div key={x}><label htmlFor={"input" + x}>{x}</label><input type="text"
                                                                                              onChange={this.handleChange}
@@ -40,33 +38,20 @@ class GenericDialog extends Dialog{
             else{
                 inputFields.push(<div key={x}>
                     <label htmlFor={"input" + x}>{x}</label>
-                    <GenericObjectLister/>
+                    <GenericObjectLister id={"input"+x} field={x} onValueChange={this.handleChange}/>
                 </div>);
             }
         }
 
-        let dialog = <div id={this.props.id}>
-            <p>{this.props.body}</p>
+        let dialog = <div id={this.props.id} title={this.props.title}>
             <div>
-                <ul className="nav nav-tabs" role="tablist">
-                    <li role="presentation" className="active"><a href="#new" aria-controls="home" role="tab" data-toggle="tab">New</a></li>
-                    {reuse!=null &&
-                    <li role="presentation"><a href="#reuse" aria-controls="profile" role="tab" data-toggle="tab">Existing</a></li>
-                    }
-                </ul>
-
-                <div className="tab-content">
-                    <div role="tabpanel" className="tab-pane active" id="new">
-                        <form action="#" onSubmit={this.handleSubmit}>
-                            <div className="form-group">
-                                {inputFields}
-                            </div>
-                            <button type="submit" className="btn btn-primary">Save</button>
-                        </form>
-                        <pre>{JSON.stringify(this.props.schema)}</pre>
+                <form action="#" onSubmit={this.handleSubmit}>
+                    <div className="form-group">
+                        {inputFields}
                     </div>
-                    {reuse}
-                </div>
+                    <button type="submit" className="btn btn-primary">Save</button>
+                </form>
+                <pre>{JSON.stringify(this.props.schema)}</pre>
             </div>
         </div>;
 
@@ -100,7 +85,7 @@ class GenericDialog extends Dialog{
                 console.error(err);
             }
             else {
-                $("#dialog" + this.props.schema._id).dialog("close");
+                $("#dialog" + this.props.schema.title).dialog("close");
             }
 
 

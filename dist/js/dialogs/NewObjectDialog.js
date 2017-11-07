@@ -47,17 +47,10 @@ var GenericDialog = function (_Dialog) {
             var inputFields = [];
             var props = this.props.schema.properties;
 
-            inputFields.push(React.createElement(
-                "p",
-                { key: "label" },
-                "Create a new ",
-                this.props.schema.title
-            ));
+            //inputFields.push(<p key={"label"}>Create a new {this.props.schema.title}</p>)
 
+            //@Todo this needs to support enumerations as well as objects
             for (var x in props) {
-                console.debug("Building Input Type for: " + x);
-                console.debug(eval("props." + x + ".type"));
-
                 if (eval("props." + x + ".type").localeCompare("string") == 0) {
                     inputFields.push(React.createElement(
                         "div",
@@ -83,71 +76,35 @@ var GenericDialog = function (_Dialog) {
                             { htmlFor: "input" + x },
                             x
                         ),
-                        React.createElement(GenericObjectLister, null)
+                        React.createElement(GenericObjectLister, { id: "input" + x, field: x, onValueChange: this.handleChange })
                     ));
                 }
             }
 
             var dialog = React.createElement(
                 "div",
-                { id: this.props.id },
-                React.createElement(
-                    "p",
-                    null,
-                    this.props.body
-                ),
+                { id: this.props.id, title: this.props.title },
                 React.createElement(
                     "div",
                     null,
                     React.createElement(
-                        "ul",
-                        { className: "nav nav-tabs", role: "tablist" },
+                        "form",
+                        { action: "#", onSubmit: this.handleSubmit },
                         React.createElement(
-                            "li",
-                            { role: "presentation", className: "active" },
-                            React.createElement(
-                                "a",
-                                { href: "#new", "aria-controls": "home", role: "tab", "data-toggle": "tab" },
-                                "New"
-                            )
+                            "div",
+                            { className: "form-group" },
+                            inputFields
                         ),
-                        reuse != null && React.createElement(
-                            "li",
-                            { role: "presentation" },
-                            React.createElement(
-                                "a",
-                                { href: "#reuse", "aria-controls": "profile", role: "tab", "data-toggle": "tab" },
-                                "Existing"
-                            )
+                        React.createElement(
+                            "button",
+                            { type: "submit", className: "btn btn-primary" },
+                            "Save"
                         )
                     ),
                     React.createElement(
-                        "div",
-                        { className: "tab-content" },
-                        React.createElement(
-                            "div",
-                            { role: "tabpanel", className: "tab-pane active", id: "new" },
-                            React.createElement(
-                                "form",
-                                { action: "#", onSubmit: this.handleSubmit },
-                                React.createElement(
-                                    "div",
-                                    { className: "form-group" },
-                                    inputFields
-                                ),
-                                React.createElement(
-                                    "button",
-                                    { type: "submit", className: "btn btn-primary" },
-                                    "Save"
-                                )
-                            ),
-                            React.createElement(
-                                "pre",
-                                null,
-                                JSON.stringify(this.props.schema)
-                            )
-                        ),
-                        reuse
+                        "pre",
+                        null,
+                        JSON.stringify(this.props.schema)
                     )
                 )
             );
@@ -185,7 +142,7 @@ var GenericDialog = function (_Dialog) {
                 if (err) {
                     console.error(err);
                 } else {
-                    $("#dialog" + this.props.schema._id).dialog("close");
+                    $("#dialog" + this.props.schema.title).dialog("close");
                 }
 
                 this.setState();
@@ -198,4 +155,4 @@ var GenericDialog = function (_Dialog) {
 
     return GenericDialog;
 }(Dialog);
-//# sourceMappingURL=GenericDialog.js.map
+//# sourceMappingURL=NewObjectDialog.js.map

@@ -29,6 +29,10 @@ class GenericLister extends React.Component{
 
     //@ToDo finish building table data rows
     getData(schema){
+        this.setState({
+            body:[]
+        });
+
         console.debug(JSON.stringify(schema));
 
         let db = new PouchDB(schema.title);
@@ -101,6 +105,11 @@ class GenericLister extends React.Component{
      * @param next
      */
     getSchema(next){
+        this.setState({
+            head:[],
+            dialog:""
+        });
+
         let db = new PouchDB(SCHEMA_DB);
 
         db.get(this.props.id, function(err, doc){
@@ -111,16 +120,18 @@ class GenericLister extends React.Component{
                 console.debug("Building Table Header for "+JSON.stringify(doc));
 
                 //Setup a new dialog
-                let dialog = <GenericDialog next={this.getData} id={"dialog"+doc._id} body={"New "+doc.title} modal={true} schema={doc}/>;
+                $("#dialog"+doc.title).dialog("destroy"); //JQuery wraps the dialog in tons of gumpf which breaks react. Have to destroy the previous dialog if it exists!
 
+                //let dialog = <GenericDialog key={"dialog"+doc.title} next={this.getData} id={"dialog"+doc.title} title={"New "+ doc.title} modal={true} schema={doc}/>;
+                let dialog = <DynamicDialog next={this.getData} id={"dialog"+doc.title} title={"New Object"} modal={true}/>
                 let props = doc.properties;
 
                 let th=[];
-                for(let x in props){
-                    th.push(<th key={x}>{x}</th>);
+                for(let field in props){
+                    th.push(<th key={field}>{field}</th>);
                 }
 
-                let button = <th key="button"><button onClick={() => this.showDialog("dialog"+doc._id)} className="btn btn-primary">{"New "+doc.title}</button></th>;
+                let button = <th key="button"><button onClick={() => this.showDialog("dialog"+doc.title)} className="btn btn-primary">{"New "+doc.title}</button></th>;
                 th.push(button);
 
                 this.setState({

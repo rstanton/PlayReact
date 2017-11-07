@@ -1,3 +1,5 @@
+//@ToDo there is a bug in here in that even if a schema changes and we reload the 'dynamic tab sheet' it doesn't cascade the changes :(
+
 class NewSchemaForm extends React.Component{
     constructor(props){
         super(props);

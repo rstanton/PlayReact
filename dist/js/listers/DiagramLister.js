@@ -98,7 +98,7 @@ var DiagramLister = function (_React$Component) {
             });
 
             //Get all documents in the database index
-            diagramDB.query("diagrams/by_name", function (err, res) {
+            diagramDB.query(DIAGRAM_VIEW, function (err, res) {
                 $("#AppModal").dialog("close");
 
                 if (err) console.error(err);

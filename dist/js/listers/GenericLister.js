@@ -49,6 +49,10 @@ var GenericLister = function (_React$Component) {
     }, {
         key: "getData",
         value: function getData(schema) {
+            this.setState({
+                body: []
+            });
+
             console.debug(JSON.stringify(schema));
 
             var db = new PouchDB(schema.title);
@@ -136,6 +140,11 @@ var GenericLister = function (_React$Component) {
     }, {
         key: "getSchema",
         value: function getSchema(next) {
+            this.setState({
+                head: [],
+                dialog: ""
+            });
+
             var db = new PouchDB(SCHEMA_DB);
 
             db.get(this.props.id, function (err, doc) {
@@ -147,16 +156,18 @@ var GenericLister = function (_React$Component) {
                     console.debug("Building Table Header for " + JSON.stringify(doc));
 
                     //Setup a new dialog
-                    var dialog = React.createElement(GenericDialog, { next: this.getData, id: "dialog" + doc._id, body: "New " + doc.title, modal: true, schema: doc });
+                    $("#dialog" + doc.title).dialog("destroy"); //JQuery wraps the dialog in tons of gumpf which breaks react. Have to destroy the previous dialog if it exists!
 
+                    //let dialog = <GenericDialog key={"dialog"+doc.title} next={this.getData} id={"dialog"+doc.title} title={"New "+ doc.title} modal={true} schema={doc}/>;
+                    var dialog = React.createElement(DynamicDialog, { next: this.getData, id: "dialog" + doc.title, title: "New Object", modal: true });
                     var props = doc.properties;
 
                     var th = [];
-                    for (var x in props) {
+                    for (var field in props) {
                         th.push(React.createElement(
                             "th",
-                            { key: x },
-                            x
+                            { key: field },
+                            field
                         ));
                     }
 
@@ -166,7 +177,7 @@ var GenericLister = function (_React$Component) {
                         React.createElement(
                             "button",
                             { onClick: function onClick() {
-                                    return _this3.showDialog("dialog" + doc._id);
+                                    return _this3.showDialog("dialog" + doc.title);
                                 }, className: "btn btn-primary" },
                             "New " + doc.title
                         )
