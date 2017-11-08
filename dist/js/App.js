@@ -8,15 +8,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var diagramDB;
-
 /**
  * This is the entry point to the 'admin' application
  *
  * @ToDo - Rethink the relationship model, It doesn't have the same logic as plain objects, so needs it's own management.
  * @ToDo - diagrams, do they start as objects?
  */
-
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
 
@@ -24,8 +21,6 @@ var App = function (_React$Component) {
         _classCallCheck(this, App);
 
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-        diagramDB = new PouchDB(DIAGRAM_DB);
 
         _this.init = _this.init.bind(_this);
         _this.createSchemaView = _this.createSchemaView.bind(_this);
@@ -35,7 +30,6 @@ var App = function (_React$Component) {
         _this.state = {
             view: ""
         };
-
         return _this;
     }
 
@@ -47,24 +41,20 @@ var App = function (_React$Component) {
     _createClass(App, [{
         key: "init",
         value: function init() {
-            var db = new PouchDB(SCHEMA_DB);
+            var db = new PouchDB(OBJECT_DB);
 
             db.info(function (err, info) {
                 if (info.doc_count == 0 && info.update_seq == 0) {
+                    console.debug("First Boot. Setting up...");
 
                     //Hacky, but create the view for the Schema DB
                     this.createSchemaView({ title: "Schema" });
+                    this.createSchemaView({ title: "Config" });
+                    this.createSchemaView({ title: "Object" });
 
-                    //For each of the out of the box schemas
-                    baseSchemas.map(function (schema) {
-                        console.log("Creating DB and View for " + schema.title);
-
-                        //Create the schema record
-                        db.post(schema, function (err, doc) {
-                            //create the map/reduce view
-                            this.createSchemaView(schema);
-                        }.bind(this));
-                    }.bind(this));
+                    this.setState({
+                        view: React.createElement(DynamicTabSheet, null)
+                    });
                 } else {
                     //Database already exists, nothing to do, just show the tabs
                     this.setState({
@@ -89,6 +79,13 @@ var App = function (_React$Component) {
                 views: {
                     by_name: {
                         map: function (doc) {
+                            if (doc.title) {
+                                emit(doc.title, doc);
+                            }
+                        }.toString()
+                    },
+                    all: {
+                        map: function (doc) {
                             emit(doc);
                         }.toString()
                     }
@@ -100,10 +97,6 @@ var App = function (_React$Component) {
                     if (err.status != 409) console.error(err);
                 } else {
                     console.log("Index for " + schema.title + " created.");
-
-                    this.setState({
-                        view: React.createElement(DynamicTabSheet, null)
-                    });
                 }
             }.bind(this));
         }

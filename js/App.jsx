@@ -1,5 +1,3 @@
-var diagramDB;
-
 /**
  * This is the entry point to the 'admin' application
  *
@@ -10,8 +8,6 @@ class App extends React.Component{
     constructor(props){
         super(props);
 
-        diagramDB = new PouchDB(DIAGRAM_DB);
-
         this.init = this.init.bind(this);
         this.createSchemaView = this.createSchemaView.bind(this);
 
@@ -19,8 +15,7 @@ class App extends React.Component{
 
         this.state = {
             view: ""
-        }
-
+        };
     }
 
 
@@ -28,25 +23,20 @@ class App extends React.Component{
      * This needs to read all the schemas and create the relevant views
      */
     init(){
-        let db = new PouchDB(SCHEMA_DB);
+        let db = new PouchDB(OBJECT_DB);
 
         db.info(function(err, info){
             if(info.doc_count==0 && info.update_seq==0){
+                console.debug("First Boot. Setting up...");
 
                 //Hacky, but create the view for the Schema DB
                 this.createSchemaView({title:"Schema"});
+                this.createSchemaView({title:"Config"});
+                this.createSchemaView({title:"Object"});
 
-                //For each of the out of the box schemas
-                baseSchemas.map(function(schema){
-                    console.log("Creating DB and View for "+schema.title);
-
-                    //Create the schema record
-                    db.post(schema, function(err, doc){
-                        //create the map/reduce view
-                        this.createSchemaView(schema);
-                    }.bind(this));
-                }.bind(this));
-
+                this.setState({
+                    view:<DynamicTabSheet/>
+                });
             }
             else{ //Database already exists, nothing to do, just show the tabs
                 this.setState({
@@ -68,6 +58,13 @@ class App extends React.Component{
             views:{
                 by_name:{
                     map:function(doc) {
+                        if(doc.title) {
+                            emit(doc.title, doc);
+                        }
+                    }.toString()
+                },
+                all:{
+                    map:function(doc) {
                         emit(doc);
                     }.toString()
                 }
@@ -81,10 +78,6 @@ class App extends React.Component{
             }
             else {
                 console.log("Index for " + schema.title + " created.");
-                
-                this.setState({
-                    view: <DynamicTabSheet/>
-                });
             }
         }.bind(this));
     }

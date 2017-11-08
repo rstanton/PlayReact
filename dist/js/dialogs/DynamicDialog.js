@@ -19,14 +19,10 @@ var DynamicDialog = function (_Dialog) {
 
         var _this = _possibleConstructorReturn(this, (DynamicDialog.__proto__ || Object.getPrototypeOf(DynamicDialog)).call(this, props));
 
-        _this.onSchemaChange = _this.onSchemaChange.bind(_this);
         _this.handleSubmit = _this.handleSubmit.bind(_this);
         _this.handleChange = _this.handleChange.bind(_this);
 
-        _this.state = {
-            form: [],
-            schema: {}
-        };
+        _this.object = {};
 
         return _this;
     }
@@ -34,52 +30,34 @@ var DynamicDialog = function (_Dialog) {
     _createClass(DynamicDialog, [{
         key: "render",
         value: function render() {
-            console.log("Rendering " + JSON.stringify(this.state.schema));
-
             return React.createElement(
                 "div",
                 { id: this.props.id, title: this.props.title },
                 React.createElement(
                     "div",
                     null,
-                    React.createElement(GenericObjectLister, { id: "SchemaLister", onChange: this.onSchemaChange }),
                     React.createElement(
                         "form",
                         { action: "#", onSubmit: this.handleSubmit },
                         React.createElement(
                             "div",
                             { className: "form-group" },
-                            React.createElement(DynamicObjectForm, { onChange: this.handleChange, schema: this.state.schema })
+                            React.createElement(DynamicObjectForm, { onChange: this.handleChange, schema: this.props.schema })
                         ),
                         React.createElement(
                             "button",
                             { type: "submit", className: "btn btn-primary" },
                             "Save"
                         )
-                    ),
-                    React.createElement(
-                        "pre",
-                        null,
-                        JSON.stringify(this.state.schema)
                     )
                 )
             );
         }
     }, {
-        key: "onSchemaChange",
-        value: function onSchemaChange(event) {
-            var schema = JSON.parse(event.target.options[event.target.selectedIndex].dataset.schema);
-            console.log("Changing object type to " + schema.title);
-
-            this.setState({
-                schema: schema
-            });
-        }
-    }, {
         key: "handleChange",
         value: function handleChange(event) {
-            console.log("Change in " + event.target.id);
-            console.log([$("#" + event.target.id).data("title")]); //:event.target.value
+            var field = [$("#" + event.target.id).data("title")];
+            this.object[field] = event.target.value;
         }
 
         //@ToDo handle database submission...
@@ -88,6 +66,21 @@ var DynamicDialog = function (_Dialog) {
         key: "handleSubmit",
         value: function handleSubmit(event) {
             var db = new PouchDB(OBJECT_DB);
+
+            this.object.title = this.props.schema.title;
+
+            console.log(JSON.stringify(this.object));
+
+            db.post(this.object, function (err, res) {
+                if (err) console.error(err);else {
+                    $("#" + this.props.id).dialog("close");
+
+                    //Callback
+                    this.props.next();
+                }
+            }.bind(this));
+
+            this.object = {};
         }
     }]);
 

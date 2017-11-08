@@ -20,7 +20,6 @@ var NewSchemaForm = function (_React$Component) {
 
         _this.handleSubmit = _this.handleSubmit.bind(_this);
         _this.handleChange = _this.handleChange.bind(_this);
-        _this.createSchemaView = _this.createSchemaView.bind(_this);
 
         _this.state = {
             schema: ""
@@ -60,57 +59,25 @@ var NewSchemaForm = function (_React$Component) {
                 schema: change.target.value
             });
         }
+
+        //@ToDo, make this create a new view for the given schema
+
     }, {
         key: "handleSubmit",
         value: function handleSubmit(event) {
             var obj = JSON.parse(this.state.schema);
 
             var db = new PouchDB(SCHEMA_DB);
+
             db.post(obj, function (err, doc) {
-                if (err) console.error(err);
+                if (err) console.error(err);else {
+                    console.debug("New Schema " + obj.title + " added successfully");
 
-                this.createSchemaView(obj);
+                    this.props.next();
+                }
             }.bind(this));
-
-            this.setState({
-                schema: ""
-            });
 
             event.preventDefault();
-        }
-
-        /**
-         * Creates the actual views
-         * @param doc The schema 'by_name' results doc, contains 'key' (title of the schema eg 'Application') and 'id'
-         */
-
-    }, {
-        key: "createSchemaView",
-        value: function createSchemaView(schema) {
-            var db = new PouchDB(schema.title);
-
-            var designDoc = {
-                _id: '_design/' + schema.title,
-                views: {
-                    by_name: {
-                        map: function (doc) {
-                            emit(doc);
-                        }.toString()
-                    }
-                }
-            };
-
-            db.put(designDoc, function (err, resp) {
-                if (err) {
-                    if (err.status != 409) console.error(err);
-
-                    this.props.next();
-                } else {
-                    console.log("Index for " + schema.title + " created.");
-
-                    this.props.next();
-                }
-            }.bind(this));
         }
     }]);
 

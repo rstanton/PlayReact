@@ -9,14 +9,16 @@
         <item url="file://$PROJECT_DIR$/dist/js/App.js" />
         <item url="file://$PROJECT_DIR$/dist/js/listers/DiagramLister.js" />
         <item url="file://$PROJECT_DIR$/dist/js/dialogs/DynamicDialog.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/tabs/DynamicTabSheet.js" />
         <item url="file://$PROJECT_DIR$/dist/js/listers/GenericLister.js" />
         <item url="file://$PROJECT_DIR$/dist/js/DynamicTabSheet.js" />
         <item url="file://$PROJECT_DIR$/dist/js/listers/AllLister.js" />
-        <item url="file://$PROJECT_DIR$/dist/js/listers/GenericObjectLister.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/dropdowns/GenericObjectLister.js" />
         <item url="file://$PROJECT_DIR$/dist/js/listers/SchemaLister.js" />
         <item url="file://$PROJECT_DIR$/dist/js/dialogs/Dialog.js" />
         <item url="file://$PROJECT_DIR$/dist/js/forms/NewSchemaForm.js" />
         <item url="file://$PROJECT_DIR$/dist/js/forms/NewDiagramForm.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/listers/DynamicLister.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -87,6 +89,15 @@
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/GenericDialog.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/ReuseObjectDialog.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/ReuseObjectDialog.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/listers/GenericObjectLister.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/listers/GenericObjectLister.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/dialogs/NewObjectDialog.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/dialogs/ReuseRelationshipDialog.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/dropdowns/GenericObjectLister.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/listers/AllLister.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/listers/GenericObjectLister.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/forms/NewDiagramForm.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/listers/DynamicLister.js" />
       <root url="file://$PROJECT_DIR$/dist/js/forms/DynamicObjectForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/Canvas.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/NewObjectDialog.js" />
@@ -94,14 +105,16 @@
       <root url="file://$PROJECT_DIR$/dist/js/App.js" />
       <root url="file://$PROJECT_DIR$/dist/js/listers/DiagramLister.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/DynamicDialog.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/tabs/DynamicTabSheet.js" />
       <root url="file://$PROJECT_DIR$/dist/js/listers/GenericLister.js" />
       <root url="file://$PROJECT_DIR$/dist/js/DynamicTabSheet.js" />
       <root url="file://$PROJECT_DIR$/dist/js/listers/AllLister.js" />
-      <root url="file://$PROJECT_DIR$/dist/js/listers/GenericObjectLister.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/dropdowns/GenericObjectLister.js" />
       <root url="file://$PROJECT_DIR$/dist/js/listers/SchemaLister.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/Dialog.js" />
       <root url="file://$PROJECT_DIR$/dist/js/forms/NewSchemaForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/forms/NewDiagramForm.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/listers/DynamicLister.js" />
     </CLASSES>
     <SOURCES />
   </library>

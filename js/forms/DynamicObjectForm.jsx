@@ -5,8 +5,7 @@ class DynamicObjectForm extends React.Component{
         this.buildInputForm = this.buildInputForm.bind(this);
 
         this.state = {
-            inputFields:[]
-        }
+        };
     }
 
     render() {
@@ -22,13 +21,11 @@ class DynamicObjectForm extends React.Component{
         let inputFields = [];
         let props = this.props.schema.properties;
 
-        //inputFields.push(<p key={"label"}>Create a new {this.props.schema.title}</p>)
-
         //@Todo this needs to support all JSON Schema type fields
-        for(let x in props){
-            inputFields.push(<div key={x}>
-                <label htmlFor={"input" + x}>{x}</label>
-                <input type="text" onChange={this.props.onChange} className="form-control" placeholder={"input " + x} id={"input" + x} data-title={x}/></div>);
+        for(let field in props){
+            inputFields.push(<div key={field}>
+                <label htmlFor={"input" + field}>{field}</label>
+                <input type="text" onChange={this.props.onChange} className="form-control" placeholder={"input " + field} id={field} data-title={field}/></div>);
         }
 
         return inputFields;

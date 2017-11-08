@@ -1,11 +1,8 @@
 const SCHEMA_DB = "Schema";
-const OBJECT_DB = "Objects";
-const APP_DB = "Application";
-const REL_DB = "Relationship";
-const DIAGRAM_DB = "Diagrams";
-const SCHEMA_VIEW = "Schema/by_name";
-const DIAGRAM_VIEW = "Diagrams/by_name";
-const baseSchemas = [{
+const OBJECT_DB = "Object";
+const SCHEMA_ALL_VIEW = "Schema/all";
+
+const relationshipSchema = {
   "$schema": "http://json-schema.org/draft-06/schema#",
   "id": "http://architecture.com/Relationship",
   "title":"Relationship",
@@ -26,27 +23,8 @@ const baseSchemas = [{
     "target"
   ],
   "type": "object"
-},{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "id": "http://architecture.com/Application",
-    "title": "Application",
-    "properties": {
-        "name": {
-            "type": "string"
-        },
-        "state": {
-            "type": "string"
-        },
-        "vendor": {
-            "type": "string"
-        }
-    },
-    "required": [
-        "name",
-        "vendor"
-    ],
-    "type": "object"
-},{
+};
+const diagramSchema = {
     "$schema": "http://json-schema.org/draft-06/schema#",
     "id": "http://architecture.com/Diagrams",
     "title": "Diagram",
@@ -63,4 +41,5 @@ const baseSchemas = [{
         "author"
     ],
     "type": "object"
-}];
+};
+

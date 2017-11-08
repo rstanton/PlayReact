@@ -18,9 +18,7 @@ var DynamicObjectForm = function (_React$Component) {
 
         _this.buildInputForm = _this.buildInputForm.bind(_this);
 
-        _this.state = {
-            inputFields: []
-        };
+        _this.state = {};
         return _this;
     }
 
@@ -39,19 +37,17 @@ var DynamicObjectForm = function (_React$Component) {
             var inputFields = [];
             var props = this.props.schema.properties;
 
-            //inputFields.push(<p key={"label"}>Create a new {this.props.schema.title}</p>)
-
             //@Todo this needs to support all JSON Schema type fields
-            for (var x in props) {
+            for (var field in props) {
                 inputFields.push(React.createElement(
                     "div",
-                    { key: x },
+                    { key: field },
                     React.createElement(
                         "label",
-                        { htmlFor: "input" + x },
-                        x
+                        { htmlFor: "input" + field },
+                        field
                     ),
-                    React.createElement("input", { type: "text", onChange: this.props.onChange, className: "form-control", placeholder: "input " + x, id: "input" + x, "data-title": x })
+                    React.createElement("input", { type: "text", onChange: this.props.onChange, className: "form-control", placeholder: "input " + field, id: field, "data-title": field })
                 ));
             }
 

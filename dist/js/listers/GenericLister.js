@@ -43,25 +43,23 @@ var GenericLister = function (_React$Component) {
             //Reads the table header and passes the schema doc to 'getData'
             this.getSchema(this.getData);
         }
-
-        //@ToDo finish building table data rows
-
     }, {
         key: "getData",
-        value: function getData(schema) {
+        value: function getData() {
             this.setState({
                 body: []
             });
 
-            console.debug(JSON.stringify(schema));
-
-            var db = new PouchDB(schema.title);
+            //@ToDo, open the object DB, not the Schema DB
+            var db = new PouchDB(OBJECT_DB);
+            var schema = this.props.schema;
 
             //The view now returns all of the documents (not the IDs)
-            db.query(schema.title + "/by_name", function (err, res) {
+            db.query("Object/by_name", { key: schema.title }, function (err, res) {
                 if (err) {
                     console.error(err);
                 } else {
+                    console.debug("Got " + res.rows.length + " of " + schema.title);
                     var body = [];
 
                     //Loop each record in the DB
@@ -69,19 +67,16 @@ var GenericLister = function (_React$Component) {
                     res.rows.map(function (doc) {
                         var _this2 = this;
 
-                        console.debug(schema.title + ", Processing Lister for " + JSON.stringify(doc.key));
+                        console.debug(schema.title + ", Processing Lister for " + JSON.stringify(doc));
 
-                        var obj = doc.key;
+                        var obj = doc.value;
                         var td = [];
 
-                        //@Todo, need to use the schema here -> we need to get the attributes of the document based on the fields in the schema, can't just iterate over the object as there maybe missing / null fields.
                         for (var field in schema.properties) {
-                            console.debug("Processing " + JSON.stringify(field));
-
                             td.push(React.createElement(
                                 "td",
                                 { key: schema.title + "." + field },
-                                eval("obj." + field)
+                                obj[field]
                             ));
                         }
 
@@ -94,7 +89,7 @@ var GenericLister = function (_React$Component) {
                                 "td",
                                 null,
                                 React.createElement("span", { onClick: function onClick() {
-                                        return _this2.delete(schema, doc.id);
+                                        return _this2.delete(doc.id);
                                     }, className: "glyphicon glyphicon-trash", "aria-hidden": "true" })
                             )
                         ));
@@ -118,15 +113,15 @@ var GenericLister = function (_React$Component) {
 
     }, {
         key: "delete",
-        value: function _delete(schema, id) {
-            console.debug("Delete " + schema.title + " with ID " + id);
-            var db = new PouchDB(schema.title);
+        value: function _delete(id) {
+            console.debug("Delete " + this.props.schema.title + " with ID " + id);
+            var db = new PouchDB(OBJECT_DB);
 
             db.get(id, function (err, doc) {
                 db.remove(doc, function (err, response) {
                     if (err) console.error(err);
 
-                    this.getData(schema);
+                    this.getData();
                 }.bind(this));
             }.bind(this));
         }
@@ -140,58 +135,50 @@ var GenericLister = function (_React$Component) {
     }, {
         key: "getSchema",
         value: function getSchema(next) {
+            var _this3 = this;
+
             this.setState({
                 head: [],
                 dialog: ""
             });
 
-            var db = new PouchDB(SCHEMA_DB);
+            var schema = this.props.schema;
 
-            db.get(this.props.id, function (err, doc) {
-                var _this3 = this;
+            //Setup a new dialog
+            $("#dialog" + schema.title).dialog("destroy"); //JQuery wraps the dialog in tons of gumpf which breaks react. Have to destroy the previous dialog if it exists!
 
-                if (err) {
-                    console.error(err);
-                } else {
-                    console.debug("Building Table Header for " + JSON.stringify(doc));
+            var dialog = React.createElement(DynamicDialog, { schema: this.props.schema, next: this.getData, id: "dialog" + schema.title, title: "New " + schema.title, modal: true });
+            var props = schema.properties;
 
-                    //Setup a new dialog
-                    $("#dialog" + doc.title).dialog("destroy"); //JQuery wraps the dialog in tons of gumpf which breaks react. Have to destroy the previous dialog if it exists!
+            var th = [];
+            for (var field in props) {
+                th.push(React.createElement(
+                    "th",
+                    { key: field },
+                    field
+                ));
+            }
 
-                    //let dialog = <GenericDialog key={"dialog"+doc.title} next={this.getData} id={"dialog"+doc.title} title={"New "+ doc.title} modal={true} schema={doc}/>;
-                    var dialog = React.createElement(DynamicDialog, { next: this.getData, id: "dialog" + doc.title, title: "New Object", modal: true });
-                    var props = doc.properties;
+            var button = React.createElement(
+                "th",
+                { key: "button" },
+                React.createElement(
+                    "button",
+                    { onClick: function onClick() {
+                            return _this3.showDialog("dialog" + schema.title);
+                        }, className: "btn btn-primary" },
+                    "New " + schema.title
+                )
+            );
+            th.push(button);
 
-                    var th = [];
-                    for (var field in props) {
-                        th.push(React.createElement(
-                            "th",
-                            { key: field },
-                            field
-                        ));
-                    }
+            this.setState({
+                head: th,
+                dialog: dialog
+            });
 
-                    var button = React.createElement(
-                        "th",
-                        { key: "button" },
-                        React.createElement(
-                            "button",
-                            { onClick: function onClick() {
-                                    return _this3.showDialog("dialog" + doc.title);
-                                }, className: "btn btn-primary" },
-                            "New " + doc.title
-                        )
-                    );
-                    th.push(button);
-
-                    this.setState({
-                        head: th,
-                        dialog: dialog
-                    });
-                }
-                //now populate the data table
-                next(doc);
-            }.bind(this));
+            //now populate the data table
+            next();
         }
     }, {
         key: "showDialog",

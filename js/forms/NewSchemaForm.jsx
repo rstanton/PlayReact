@@ -6,7 +6,6 @@ class NewSchemaForm extends React.Component{
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.createSchemaView = this.createSchemaView.bind(this);
 
         this.state = {
             schema:""
@@ -31,55 +30,23 @@ class NewSchemaForm extends React.Component{
         });
     }
 
+    //@ToDo, make this create a new view for the given schema
     handleSubmit(event){
         let obj = JSON.parse(this.state.schema);
 
         let db = new PouchDB(SCHEMA_DB);
+
         db.post(obj, function(err,doc){
             if(err)
-                console.error(err)
+                console.error(err);
+            else{
+                console.debug("New Schema "+obj.title+" added successfully");
 
-            this.createSchemaView(obj);
+                this.props.next();
+            }
         }.bind(this));
-
-        this.setState({
-            schema:""
-        });
 
         event.preventDefault();
     }
 
-    /**
-     * Creates the actual views
-     * @param doc The schema 'by_name' results doc, contains 'key' (title of the schema eg 'Application') and 'id'
-     */
-    createSchemaView(schema){
-        let db = new PouchDB(schema.title);
-
-
-        var designDoc = {
-            _id:'_design/'+schema.title,
-            views:{
-                by_name:{
-                    map:function(doc) {
-                        emit(doc);
-                    }.toString()
-                }
-            }
-        };
-
-        db.put(designDoc, function(err, resp){
-            if(err) {
-                if (err.status != 409)
-                    console.error(err);
-
-                this.props.next();
-            }
-            else {
-                console.log("Index for " + schema.title + " created.");
-
-                this.props.next();
-            }
-        }.bind(this));
-    }
 }
