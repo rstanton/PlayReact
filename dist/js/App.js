@@ -51,16 +51,12 @@ var App = function (_React$Component) {
                     this.createSchemaView({ title: "Schema" });
                     this.createSchemaView({ title: "Config" });
                     this.createSchemaView({ title: "Object" });
-
-                    this.setState({
-                        view: React.createElement(DynamicTabSheet, null)
-                    });
-                } else {
-                    //Database already exists, nothing to do, just show the tabs
-                    this.setState({
-                        view: React.createElement(DynamicTabSheet, null)
-                    });
                 }
+
+                //Database already exists, nothing to do, just show the tabs
+                this.setState({
+                    view: React.createElement(DynamicTabSheet, null)
+                });
             }.bind(this));
         }
 

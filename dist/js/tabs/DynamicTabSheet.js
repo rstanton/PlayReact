@@ -147,6 +147,23 @@ var DynamicTabSheet = function (_React$Component) {
                         React.createElement(GenericLister, { schema: diagramSchema, id: diagramSchema.title, next: this.getObjectTypes })
                     ));
 
+                    console.log("Adding Templates");
+
+                    tbs.push(React.createElement(
+                        "li",
+                        { key: "templates", role: "presentation" },
+                        React.createElement(
+                            "a",
+                            { href: "#" + templateSchema.title, "aria-controls": "diagrams", role: "tab", "data-toggle": "tab" },
+                            "Templates"
+                        )
+                    ));
+                    content.push(React.createElement(
+                        "div",
+                        { key: templateSchema.title, role: "tabpanel", className: "tab-pane", id: templateSchema.title },
+                        React.createElement(GenericLister, { schema: templateSchema, id: templateSchema.title, next: this.getObjectTypes })
+                    ));
+
                     /**tbs.push(<li key="diagrams" role="presentation"><a href={"#diagrams"} aria-controls="diagrams" role="tab" data-toggle="tab">Diagrams</a></li>);
                     content.push(<div key="diagrams" role="tabpanel" className="tab-pane" id="diagrams"><DiagramLister/></div>);**/
 

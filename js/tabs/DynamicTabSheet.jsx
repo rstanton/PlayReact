@@ -72,8 +72,6 @@ class DynamicTabSheet extends React.Component{
                     <NewSchemaForm next={this.getObjectTypes}/>
                 </div>);
 
-
-
                 //Add tabs and tab content for diagrams and relationships
                 tbs.push(<li key="relationships" role="presentation"><a href={"#"+relationshipSchema.title} aria-controls="diagrams" role="tab" data-toggle="tab">Relationships</a></li>);
                 content.push(<div key={relationshipSchema.title} role="tabpanel" className="tab-pane" id={relationshipSchema.title}>
@@ -83,6 +81,14 @@ class DynamicTabSheet extends React.Component{
                 tbs.push(<li key="diagrams" role="presentation"><a href={"#"+diagramSchema.title} aria-controls="diagrams" role="tab" data-toggle="tab">Diagrams</a></li>);
                 content.push(<div key={diagramSchema.title} role="tabpanel" className="tab-pane" id={diagramSchema.title}>
                     <GenericLister schema={diagramSchema} id={diagramSchema.title} next={this.getObjectTypes}/>
+                </div>);
+
+
+                console.log("Adding Templates");
+
+                tbs.push(<li key="templates" role="presentation"><a href={"#"+templateSchema.title} aria-controls="diagrams" role="tab" data-toggle="tab">Templates</a></li>);
+                content.push(<div key={templateSchema.title} role="tabpanel" className="tab-pane" id={templateSchema.title}>
+                    <GenericLister schema={templateSchema} id={templateSchema.title} next={this.getObjectTypes}/>
                 </div>);
 
 

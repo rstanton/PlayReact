@@ -24,6 +24,7 @@ const relationshipSchema = {
   ],
   "type": "object"
 };
+
 const diagramSchema = {
     "$schema": "http://json-schema.org/draft-06/schema#",
     "id": "http://architecture.com/Diagrams",
@@ -34,12 +35,41 @@ const diagramSchema = {
         },
         "author": {
             "type": "string"
+        },
+        "usedObjects":{
+            "type":"array",
+            "items":{
+                "type":"object"
+            }
+        },
+        "usedRelationships":{
+            "type":"array",
+            "items":{
+                "type":"object"
+            }
         }
     },
-    "required": [
-        "name",
-        "author"
-    ],
+    "type": "object"
+};
+
+const templateSchema = {
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "id": "http://architecture.com/Template",
+    "title": "Template",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "author": {
+            "type": "string"
+        },
+        "allowedObjects":{
+            "type":"array",
+            "items":{
+                "type":"object"
+            }
+        }
+    },
     "type": "object"
 };
 

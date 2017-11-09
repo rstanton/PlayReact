@@ -22,27 +22,23 @@ class App extends React.Component{
     /**
      * This needs to read all the schemas and create the relevant views
      */
-    init(){
+    init() {
         let db = new PouchDB(OBJECT_DB);
 
-        db.info(function(err, info){
-            if(info.doc_count==0 && info.update_seq==0){
+        db.info(function (err, info) {
+            if (info.doc_count == 0 && info.update_seq == 0) {
                 console.debug("First Boot. Setting up...");
 
                 //Hacky, but create the view for the Schema DB
-                this.createSchemaView({title:"Schema"});
-                this.createSchemaView({title:"Config"});
-                this.createSchemaView({title:"Object"});
+                this.createSchemaView({title: "Schema"});
+                this.createSchemaView({title: "Config"});
+                this.createSchemaView({title: "Object"});
+            }
 
-                this.setState({
-                    view:<DynamicTabSheet/>
-                });
-            }
-            else{ //Database already exists, nothing to do, just show the tabs
-                this.setState({
-                    view:<DynamicTabSheet/>
-                });
-            }
+            //Database already exists, nothing to do, just show the tabs
+            this.setState({
+                view: <DynamicTabSheet/>
+            });
         }.bind(this));
     }
 

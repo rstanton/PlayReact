@@ -38,17 +38,36 @@ var DynamicObjectForm = function (_React$Component) {
             var props = this.props.schema.properties;
 
             //@Todo this needs to support all JSON Schema type fields
+
             for (var field in props) {
-                inputFields.push(React.createElement(
-                    "div",
-                    { key: field },
-                    React.createElement(
-                        "label",
-                        { htmlFor: "input" + field },
-                        field
-                    ),
-                    React.createElement("input", { type: "text", onChange: this.props.onChange, className: "form-control", placeholder: "input " + field, id: field, "data-title": field })
-                ));
+                console.debug(JSON.stringify(props[field]));
+
+                var obj = props[field];
+                if (obj.type.localeCompare("string") == 0) {
+                    inputFields.push(React.createElement(
+                        "div",
+                        { key: field },
+                        React.createElement(
+                            "label",
+                            { htmlFor: "input" + field },
+                            field
+                        ),
+                        React.createElement("input", { type: "text", onChange: this.props.onChange, className: "form-control",
+                            placeholder: "input " + field, id: field, "data-title": field })
+                    ));
+                } else if (obj.type.localeCompare("object") == 0) {} else if (obj.type.localeCompare("array") == 0) {
+                    console.log("Buiding Array");
+                    inputFields.push(React.createElement(
+                        "div",
+                        { key: field },
+                        React.createElement(
+                            "label",
+                            { htmlFor: "input" + field },
+                            field
+                        ),
+                        React.createElement(ObjectListBuilder, { id: "input" + field, schema: this.props.schema })
+                    ));
+                }
             }
 
             return inputFields;

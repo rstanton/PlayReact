@@ -1,47 +1,66 @@
-var view;
-var appDB;
+class Canvas extends React.Component {
 
-class Canvas extends React.Component{
-
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.componentDidMount = this.componentDidMount.bind(this)
+        this.init = this.init.bind(this);
 
-        appDB = new PouchDB("applications");
-    }
+        this.schemas = [];
+        this.view = {};
 
-    componentDidMount(){
-        let width = 2000;
-        let height = 2000;
-
-        view = new View(this.props.id, width, height);
-        view.setScrollArea("#"+this.props.id);
+        this.init();
     }
 
 
-    render(){
-        let style={
-            width:"2000px",
-            height:"2000px"
+
+    componentDidMount() {
+        let width = 3000;
+        let height = 3000;
+
+        this.view = new View(this.props.id, width, height);
+        this.view.setScrollArea("#" + this.props.id);
+    }
+
+    /**
+     * Read all the schemas and make them available to the rest of the app
+     */
+    init(){
+        let db = new PouchDB(SCHEMA_DB);
+
+        db.query(SCHEMA_ALL_VIEW, function(err,res){
+            console.debug("Got "+res.rows.length+" schemas");
+
+            let schemas = res.rows.map(function(obj){
+                return obj;
+            }.bind(this));
+
+            this.schemas = schemas;
+
+            db = null;
+        }.bind(this));
+    }
+
+    render() {
+        let canvasStyle = {
+            width: "3000px",
+            height: "3000px"
+        };
+
+        let floatStyle = {
+            position: "sticky",
+            left: "10px",
+            top: "10px",
+            zIndex:"1000"
         };
 
         return <div>
-            <IntDialog next={this.next.bind(this)} modal="true" id="interfaceDialog" title="Interfaces" body="Interfaces Here"/>
-            <NewApplicationDialog reuse={true} next={this.next.bind(this)} modal="true" id="applicationDialog" title="Applications" body="Applications Here"/>
+            <span style={floatStyle} className="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+            <NavBar/>
             <div id={this.props.id + "_container"}>
-                <div style={style} id={this.props.id} /></div>
+                <div style={canvasStyle} id={this.props.id}/>
             </div>
-    }
-
-    next(obj){
-        $("#applicationDialog").dialog("close");
-        console.log(JSON.stringify(obj));
-        let rect = new draw2d.shape.basic.Rectangle();
-        let label = new draw2d.shape.basic.Label({text:obj.id+" "+obj.appName});
-        rect.add(label, new draw2d.layout.locator.BottomLocator());
-
-        view.add(rect);
+        </div>
     }
 }
 
