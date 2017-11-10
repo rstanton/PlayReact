@@ -1,15 +1,18 @@
 class DynamicTabSheet extends React.Component{
-    constructor(props){
+    constructor(props) {
         super(props);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.getObjectTypes = this.getObjectTypes.bind(this);
 
         //tabs the HTML for the tabs, and tabContent the HTML for the tab bodies
         this.state = {
-            tabs:[],
-            tabContent:[]
-        }
+            tabs: [],
+            tabContent: []
+        };
+
+        this.allSchemas = [];
     }
+
 
     componentDidMount(){
         this.getObjectTypes();
@@ -47,6 +50,10 @@ class DynamicTabSheet extends React.Component{
                 let tbs = [];
                 let content = [];
 
+                this.allSchemas = res.rows.map(function(obj){
+                    return obj.key;
+                });
+
                 //Loop each of the Schema objects returned from the Schema DB query
                 res.rows.map(function(schema){
                     console.debug("Creating Sheet for "+JSON.stringify(schema));
@@ -58,7 +65,7 @@ class DynamicTabSheet extends React.Component{
                     //add tab content, use the lister component to update
                     content = this.state.tabContent;
                     content.push(<div key={schema.key.title} role="tabpanel" className="tab-pane" id={schema.key.title}>
-                        <GenericLister schema={schema.key} id={schema.key.title} next={this.getObjectTypes}/>
+                        <GenericLister allSchemas={this.allSchemas} schema={schema.key} id={schema.key.title} next={this.getObjectTypes}/>
                     </div>);
 
                 }.bind(this));
@@ -75,20 +82,19 @@ class DynamicTabSheet extends React.Component{
                 //Add tabs and tab content for diagrams and relationships
                 tbs.push(<li key="relationships" role="presentation"><a href={"#"+relationshipSchema.title} aria-controls="diagrams" role="tab" data-toggle="tab">Relationships</a></li>);
                 content.push(<div key={relationshipSchema.title} role="tabpanel" className="tab-pane" id={relationshipSchema.title}>
-                    <GenericLister schema={relationshipSchema} id={relationshipSchema.title} next={this.getObjectTypes}/>
+                    <GenericLister allSchemas={this.allSchemas} schema={relationshipSchema} id={relationshipSchema.title} next={this.getObjectTypes}/>
                 </div>);
 
                 tbs.push(<li key="diagrams" role="presentation"><a href={"#"+diagramSchema.title} aria-controls="diagrams" role="tab" data-toggle="tab">Diagrams</a></li>);
                 content.push(<div key={diagramSchema.title} role="tabpanel" className="tab-pane" id={diagramSchema.title}>
-                    <GenericLister schema={diagramSchema} id={diagramSchema.title} next={this.getObjectTypes}/>
+                    <GenericLister allSchemas={this.allSchemas} schema={diagramSchema} id={diagramSchema.title} next={this.getObjectTypes}/>
                 </div>);
 
 
                 console.log("Adding Templates");
-
                 tbs.push(<li key="templates" role="presentation"><a href={"#"+templateSchema.title} aria-controls="diagrams" role="tab" data-toggle="tab">Templates</a></li>);
                 content.push(<div key={templateSchema.title} role="tabpanel" className="tab-pane" id={templateSchema.title}>
-                    <GenericLister schema={templateSchema} id={templateSchema.title} next={this.getObjectTypes}/>
+                    <GenericLister allSchemas={this.allSchemas} schema={templateSchema} id={templateSchema.title} next={this.getObjectTypes}/>
                 </div>);
 
 

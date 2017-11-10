@@ -8,56 +8,35 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ObjectListBuilder = function (_React$Component) {
-    _inherits(ObjectListBuilder, _React$Component);
+var MultiSelect = function (_React$Component) {
+    _inherits(MultiSelect, _React$Component);
 
-    function ObjectListBuilder(props) {
-        _classCallCheck(this, ObjectListBuilder);
+    function MultiSelect(props) {
+        _classCallCheck(this, MultiSelect);
 
-        var _this = _possibleConstructorReturn(this, (ObjectListBuilder.__proto__ || Object.getPrototypeOf(ObjectListBuilder)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (MultiSelect.__proto__ || Object.getPrototypeOf(MultiSelect)).call(this, props));
 
         _this.componentDidMount = _this.componentDidMount.bind(_this);
+        _this.buildList = _this.buildList.bind(_this);
         return _this;
     }
 
-    _createClass(ObjectListBuilder, [{
+    _createClass(MultiSelect, [{
         key: "componentDidMount",
-        value: function componentDidMount() {
-            $("#" + this.props.id).selectable({
-                selected: function selected(ev, ui) {
-                    console.log("Selected");
-                }
-            });
-        }
+        value: function componentDidMount() {}
     }, {
         key: "render",
-        value: function render() {
-            console.log("Runing Builder");
-            var style = {
-                width: "100%"
-            };
+        value: function render() {}
+    }, {
+        key: "buildList",
+        value: function buildList() {
+            console.debug(JSON.stringify(this.props.allSchema));
 
-            return React.createElement(
-                "div",
-                { style: style },
-                React.createElement(
-                    "ul",
-                    { className: "list-group", multiple: true, id: this.props.id },
-                    React.createElement(
-                        "option",
-                        { className: "list-group-item", value: "one", key: "one" },
-                        "One"
-                    ),
-                    React.createElement(
-                        "option",
-                        { className: "list-group-item", value: "two", key: "two" },
-                        "trow"
-                    )
-                )
-            );
+            var allSchema = this.props.allSchema;
+            allSchema.map(function (schema) {});
         }
     }]);
 
-    return ObjectListBuilder;
+    return MultiSelect;
 }(React.Component);
-//# sourceMappingURL=ObjectListBuilder.js.map
+//# sourceMappingURL=MultiSelect.js.map

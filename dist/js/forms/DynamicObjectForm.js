@@ -17,15 +17,37 @@ var DynamicObjectForm = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (DynamicObjectForm.__proto__ || Object.getPrototypeOf(DynamicObjectForm)).call(this, props));
 
         _this.buildInputForm = _this.buildInputForm.bind(_this);
+        _this.handleSelect = _this.handleSelect.bind(_this);
+        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
 
-        _this.state = {};
+        _this.state = {
+            object: {}
+        };
+
+        _this.list = [];
+
         return _this;
     }
 
     _createClass(DynamicObjectForm, [{
         key: "render",
         value: function render() {
-            var form = this.buildInputForm();
+            var fields = this.buildInputForm();
+            var form = React.createElement(
+                "form",
+                { action: "#", onSubmit: this.handleSubmit },
+                React.createElement(
+                    "div",
+                    { className: "form-group" },
+                    fields
+                ),
+                React.createElement(
+                    "button",
+                    { type: "submit", className: "btn btn-primary" },
+                    "Save"
+                )
+            );
 
             return form;
         }
@@ -43,6 +65,7 @@ var DynamicObjectForm = function (_React$Component) {
                 console.debug(JSON.stringify(props[field]));
 
                 var obj = props[field];
+
                 if (obj.type.localeCompare("string") == 0) {
                     inputFields.push(React.createElement(
                         "div",
@@ -52,11 +75,9 @@ var DynamicObjectForm = function (_React$Component) {
                             { htmlFor: "input" + field },
                             field
                         ),
-                        React.createElement("input", { type: "text", onChange: this.props.onChange, className: "form-control",
-                            placeholder: "input " + field, id: field, "data-title": field })
+                        React.createElement("input", { type: "text", value: this.state[field], onChange: this.handleChange, className: "form-control", placeholder: "input " + field, id: field, "data-field": field })
                     ));
                 } else if (obj.type.localeCompare("object") == 0) {} else if (obj.type.localeCompare("array") == 0) {
-                    console.log("Buiding Array");
                     inputFields.push(React.createElement(
                         "div",
                         { key: field },
@@ -65,12 +86,97 @@ var DynamicObjectForm = function (_React$Component) {
                             { htmlFor: "input" + field },
                             field
                         ),
-                        React.createElement(ObjectListBuilder, { id: "input" + field, schema: this.props.schema })
+                        React.createElement(
+                            "div",
+                            { className: "form-inline" },
+                            React.createElement(
+                                "div",
+                                { className: "form-group" },
+                                React.createElement(Select, { value: this.state.object[field], multi: true, handleSelect: this.handleSelect, field: field, list: this.props.allSchemas })
+                            )
+                        )
                     ));
                 }
             }
 
             return inputFields;
+        }
+
+        //@ToDo handle database submission...
+
+    }, {
+        key: "handleSubmit",
+        value: function handleSubmit(event) {
+            var db = new PouchDB(OBJECT_DB);
+
+            this.state.object.title = this.props.schema.title;
+
+            console.log("Writing new Object: " + JSON.stringify(this.state.object));
+
+            db.post(this.state.object, function (err, res) {
+                if (err) console.error(err);else {
+                    $("#" + this.props.dialogId).dialog("close");
+
+                    var obj = {};
+                    this.setState({
+                        object: obj
+                    });
+
+                    //Callback
+                    this.props.next();
+                }
+            }.bind(this));
+        }
+    }, {
+        key: "handleChange",
+        value: function handleChange(event) {
+            var field = [$("#" + event.target.id).data("field")];
+
+            this.state.object[field] = event.target.value;
+        }
+    }, {
+        key: "handleSelect",
+        value: function handleSelect(event) {
+            var field = [$("#" + event.target.id).data("field")];
+
+            var options = event.target.selectedOptions;
+
+            var list = [];
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = options[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var x = _step.value;
+
+                    var id = x.attributes["data-id"].value;
+
+                    console.debug("Addding Object " + id + " to new definition");
+
+                    list.push(id);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            var obj = this.state.object;
+            obj[field] = list;
+            console.log("Setting new Object State: " + JSON.stringify(obj));
+            this.setState({
+                object: obj
+            });
         }
     }]);
 

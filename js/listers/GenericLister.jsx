@@ -111,7 +111,7 @@ class GenericLister extends React.Component{
         //Setup a new dialog
         $("#dialog"+schema.title).dialog("destroy"); //JQuery wraps the dialog in tons of gumpf which breaks react. Have to destroy the previous dialog if it exists!
 
-        let dialog = <DynamicDialog schema={this.props.schema} next={this.getData} id={"dialog"+schema.title} title={"New "+schema.title} modal={true}/>
+        let dialog = <DynamicDialog allSchemas={this.props.allSchemas} schema={this.props.schema} next={this.getData} id={"dialog"+schema.title} title={"New "+schema.title} modal={true}/>
         let props = schema.properties;
 
         let th=[];

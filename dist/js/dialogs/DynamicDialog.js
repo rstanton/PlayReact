@@ -17,14 +17,7 @@ var DynamicDialog = function (_Dialog) {
     function DynamicDialog(props) {
         _classCallCheck(this, DynamicDialog);
 
-        var _this = _possibleConstructorReturn(this, (DynamicDialog.__proto__ || Object.getPrototypeOf(DynamicDialog)).call(this, props));
-
-        _this.handleSubmit = _this.handleSubmit.bind(_this);
-        _this.handleChange = _this.handleChange.bind(_this);
-
-        _this.object = {};
-
-        return _this;
+        return _possibleConstructorReturn(this, (DynamicDialog.__proto__ || Object.getPrototypeOf(DynamicDialog)).call(this, props));
     }
 
     _createClass(DynamicDialog, [{
@@ -36,51 +29,9 @@ var DynamicDialog = function (_Dialog) {
                 React.createElement(
                     "div",
                     null,
-                    React.createElement(
-                        "form",
-                        { action: "#", onSubmit: this.handleSubmit },
-                        React.createElement(
-                            "div",
-                            { className: "form-group" },
-                            React.createElement(DynamicObjectForm, { onChange: this.handleChange, schema: this.props.schema })
-                        ),
-                        React.createElement(
-                            "button",
-                            { type: "submit", className: "btn btn-primary" },
-                            "Save"
-                        )
-                    )
+                    React.createElement(DynamicObjectForm, { dialogId: this.props.id, next: this.props.next, allSchemas: this.props.allSchemas, schema: this.props.schema })
                 )
             );
-        }
-    }, {
-        key: "handleChange",
-        value: function handleChange(event) {
-            var field = [$("#" + event.target.id).data("title")];
-            this.object[field] = event.target.value;
-        }
-
-        //@ToDo handle database submission...
-
-    }, {
-        key: "handleSubmit",
-        value: function handleSubmit(event) {
-            var db = new PouchDB(OBJECT_DB);
-
-            this.object.title = this.props.schema.title;
-
-            console.log(JSON.stringify(this.object));
-
-            db.post(this.object, function (err, res) {
-                if (err) console.error(err);else {
-                    $("#" + this.props.id).dialog("close");
-
-                    //Callback
-                    this.props.next();
-                }
-            }.bind(this));
-
-            this.object = {};
         }
     }]);
 
