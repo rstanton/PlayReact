@@ -14,5 +14,4 @@ class DynamicDialog extends Dialog{
             </div>
         </div>;
     }
-
 }

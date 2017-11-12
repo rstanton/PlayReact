@@ -32,23 +32,22 @@ class GenericLister extends React.Component{
             body:[]
         });
 
-        //@ToDo, open the object DB, not the Schema DB
         let db = new PouchDB(OBJECT_DB);
         let schema = this.props.schema;
 
         //The view now returns all of the documents (not the IDs)
-        db.query("Object/by_name", {key: schema.title }, function(err,res){
+        db.query(OBJECT_BY_TYPE, {key: schema.id }, function(err,res){
             if(err){
                 console.error(err);
             }
             else{
-                console.debug("Got "+res.rows.length+" of "+schema.title);
+                console.debug(schema.title+" Lister, Got "+res.rows.length+" instances");
                 let body = [];
 
                 //Loop each record in the DB
                 let key =0;
                 res.rows.map(function(doc){
-                    console.debug(schema.title+", Processing Lister for "+JSON.stringify(doc));
+                    console.debug(schema.title+" Lister, adding instance: "+JSON.stringify(doc));
 
                     let obj = doc.value;
                     let td = [];
@@ -57,7 +56,6 @@ class GenericLister extends React.Component{
                         td.push(<td key={schema.title+"."+field}>{obj[field]}</td>);
                     }
 
-                    //
                     body.push(<tr key={key}>
                         {td}
                         <td>
@@ -115,8 +113,16 @@ class GenericLister extends React.Component{
         let props = schema.properties;
 
         let th=[];
-        for(let field in props){
-            th.push(<th key={field}>{field}</th>);
+        for(let field in props) {
+            const hide = props[field].hide;
+
+            let displayName = field;
+
+            if (props[field].displayName)
+                displayName = props[field].displayName;
+
+            if (!hide)
+                th.push(<th key={field}>{displayName}</th>);
         }
 
         let button = <th key="button"><button onClick={() => this.showDialog("dialog"+schema.title)} className="btn btn-primary">{"New "+schema.title}</button></th>;

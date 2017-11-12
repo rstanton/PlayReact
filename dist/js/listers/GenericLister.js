@@ -50,16 +50,15 @@ var GenericLister = function (_React$Component) {
                 body: []
             });
 
-            //@ToDo, open the object DB, not the Schema DB
             var db = new PouchDB(OBJECT_DB);
             var schema = this.props.schema;
 
             //The view now returns all of the documents (not the IDs)
-            db.query("Object/by_name", { key: schema.title }, function (err, res) {
+            db.query(OBJECT_BY_TYPE, { key: schema.id }, function (err, res) {
                 if (err) {
                     console.error(err);
                 } else {
-                    console.debug("Got " + res.rows.length + " of " + schema.title);
+                    console.debug(schema.title + " Lister, Got " + res.rows.length + " instances");
                     var body = [];
 
                     //Loop each record in the DB
@@ -67,7 +66,7 @@ var GenericLister = function (_React$Component) {
                     res.rows.map(function (doc) {
                         var _this2 = this;
 
-                        console.debug(schema.title + ", Processing Lister for " + JSON.stringify(doc));
+                        console.debug(schema.title + " Lister, adding instance: " + JSON.stringify(doc));
 
                         var obj = doc.value;
                         var td = [];
@@ -80,7 +79,6 @@ var GenericLister = function (_React$Component) {
                             ));
                         }
 
-                        //
                         body.push(React.createElement(
                             "tr",
                             { key: key },
@@ -152,10 +150,16 @@ var GenericLister = function (_React$Component) {
 
             var th = [];
             for (var field in props) {
-                th.push(React.createElement(
+                var hide = props[field].hide;
+
+                var displayName = field;
+
+                if (props[field].displayName) displayName = props[field].displayName;
+
+                if (!hide) th.push(React.createElement(
                     "th",
                     { key: field },
-                    field
+                    displayName
                 ));
             }
 

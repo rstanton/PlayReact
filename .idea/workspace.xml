@@ -2,26 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0025b09d-5020-4a30-a77e-49a44a395915" name="Default" comment="Ch ch changes...">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/forms/MultiSelect.jsx" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/listers/ObjectListBuilder.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/js/listers/ObjectListBuilder.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/listers/ObjectListBuilder.jsx" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/dialogs/DynamicDialog.js" afterPath="$PROJECT_DIR$/dist/js/dialogs/DynamicDialog.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/App.js" afterPath="$PROJECT_DIR$/dist/js/App.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/App.js.map" afterPath="$PROJECT_DIR$/dist/js/App.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/RelationshipSchema.js" afterPath="$PROJECT_DIR$/dist/js/RelationshipSchema.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/dialogs/DynamicDialog.js.map" afterPath="$PROJECT_DIR$/dist/js/dialogs/DynamicDialog.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/forms/DynamicObjectForm.js" afterPath="$PROJECT_DIR$/dist/js/forms/DynamicObjectForm.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/forms/DynamicObjectForm.js.map" afterPath="$PROJECT_DIR$/dist/js/forms/DynamicObjectForm.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/forms/MultiSelect.js" afterPath="$PROJECT_DIR$/dist/js/forms/MultiSelect.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/forms/MultiSelect.js.map" afterPath="$PROJECT_DIR$/dist/js/forms/MultiSelect.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/forms/NewSchemaForm.js" afterPath="$PROJECT_DIR$/dist/js/forms/NewSchemaForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/forms/NewSchemaForm.js.map" afterPath="$PROJECT_DIR$/dist/js/forms/NewSchemaForm.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/listers/GenericLister.js" afterPath="$PROJECT_DIR$/dist/js/listers/GenericLister.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/listers/GenericLister.js.map" afterPath="$PROJECT_DIR$/dist/js/listers/GenericLister.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/tabs/DynamicTabSheet.js" afterPath="$PROJECT_DIR$/dist/js/tabs/DynamicTabSheet.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/tabs/DynamicTabSheet.js.map" afterPath="$PROJECT_DIR$/dist/js/tabs/DynamicTabSheet.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/App.jsx" afterPath="$PROJECT_DIR$/js/App.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/dialogs/DynamicDialog.jsx" afterPath="$PROJECT_DIR$/js/dialogs/DynamicDialog.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/forms/DynamicObjectForm.jsx" afterPath="$PROJECT_DIR$/js/forms/DynamicObjectForm.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/forms/MultiSelect.jsx" afterPath="$PROJECT_DIR$/js/forms/MultiSelect.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/forms/NewSchemaForm.jsx" afterPath="$PROJECT_DIR$/js/forms/NewSchemaForm.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/listers/GenericLister.jsx" afterPath="$PROJECT_DIR$/js/listers/GenericLister.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/tabs/DynamicTabSheet.jsx" afterPath="$PROJECT_DIR$/js/tabs/DynamicTabSheet.jsx" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,48 +33,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DynamicObjectForm.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/forms/DynamicObjectForm.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="44" column="53" lean-forward="true" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MultiSelect.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/forms/MultiSelect.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="69" lean-forward="false" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DynamicDialog.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/dialogs/DynamicDialog.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="45" lean-forward="false" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GenericLister.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/listers/GenericLister.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="113" column="65" lean-forward="false" selection-start-line="113" selection-start-column="65" selection-end-line="113" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -134,25 +92,25 @@
         <option value="$PROJECT_DIR$/js/listers/AllLister.jsx" />
         <option value="$PROJECT_DIR$/js/listers/GenericObjectLister.jsx" />
         <option value="$PROJECT_DIR$/js/listers/DynamicLister.jsx" />
-        <option value="$PROJECT_DIR$/js/forms/NewSchemaForm.jsx" />
         <option value="$PROJECT_DIR$/js/dropdowns/GenericObjectLister.jsx" />
         <option value="$PROJECT_DIR$/js/DynamicTabSheet.jsx" />
         <option value="$PROJECT_DIR$/canvas.html" />
         <option value="$PROJECT_DIR$/js/Canvas.jsx" />
         <option value="$PROJECT_DIR$/bower_components/octicons/lib/svg/database.svg" />
         <option value="$PROJECT_DIR$/js/navs/NavBar.jsx" />
-        <option value="$PROJECT_DIR$/js/App.jsx" />
-        <option value="$PROJECT_DIR$/dist/js/RelationshipSchema.js" />
         <option value="$PROJECT_DIR$/js/listers/ObjectListBuilder.jsx" />
         <option value="$PROJECT_DIR$/dist/js/MultiSelect.jsx" />
-        <option value="$PROJECT_DIR$/js/listers/GenericLister.jsx" />
         <option value="$PROJECT_DIR$/dist/js/dialogs/Dialog.js" />
         <option value="$PROJECT_DIR$/js/dialogs/Dialog.jsx" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/tabs/DynamicTabSheet.jsx" />
         <option value="$PROJECT_DIR$/js/dialogs/DynamicDialog.jsx" />
+        <option value="$PROJECT_DIR$/dist/js/RelationshipSchema.js" />
         <option value="$PROJECT_DIR$/js/forms/MultiSelect.jsx" />
         <option value="$PROJECT_DIR$/js/forms/DynamicObjectForm.jsx" />
+        <option value="$PROJECT_DIR$/js/App.jsx" />
+        <option value="$PROJECT_DIR$/js/listers/GenericLister.jsx" />
+        <option value="$PROJECT_DIR$/js/forms/NewSchemaForm.jsx" />
       </list>
     </option>
   </component>
@@ -196,6 +154,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -212,6 +171,12 @@
               <item name="PlayReact" type="b2602c69:ProjectViewProjectNode" />
               <item name="PlayReact" type="462c0819:PsiDirectoryNode" />
               <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PlayReact" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PlayReact" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PlayReact" type="b2602c69:ProjectViewProjectNode" />
@@ -253,7 +218,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -264,20 +228,20 @@
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/node_modules/.bin/babel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../u2f" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/dist/js" />
-      <recent name="$PROJECT_DIR$/js" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/js/forms" />
       <recent name="$PROJECT_DIR$/js/tabs" />
       <recent name="$PROJECT_DIR$/js/dropdowns" />
       <recent name="$PROJECT_DIR$/dist/js" />
       <recent name="$PROJECT_DIR$/js/dialogs" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dist/js" />
+      <recent name="$PROJECT_DIR$/js" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -332,7 +296,10 @@
       <workItem from="1510162926123" duration="14013000" />
       <workItem from="1510256558963" duration="4778000" />
       <workItem from="1510261364465" duration="2540000" />
-      <workItem from="1510340727198" duration="8401000" />
+      <workItem from="1510340727198" duration="8451000" />
+      <workItem from="1510393540285" duration="5977000" />
+      <workItem from="1510503068676" duration="7339000" />
+      <workItem from="1510514082125" duration="8586000" />
     </task>
     <task id="LOCAL-00001" summary="Ch ch changes...">
       <created>1509281452398</created>
@@ -345,7 +312,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166135000" />
+    <option name="totallyTimeSpent" value="188087000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -358,10 +325,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1818" y="79" width="1922" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20242488" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.48708487" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32831" sideWeight="0.48708487" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32185146" sideWeight="0.65946233" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.49578503" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938644" sideWeight="0.4897206" order="9" side_tool="false" content_ui="tabs" />
@@ -413,7 +379,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dist/js/dialogs/applications/AppDialog.js" />
     <entry file="file://$PROJECT_DIR$/js/dialogs/IntDialog.jsx" />
     <entry file="file://$PROJECT_DIR$/js/listers/InterfaceLister.jsx" />
     <entry file="file://$PROJECT_DIR$/dist/js/forms/ReuseAppForm.js" />
@@ -484,13 +449,6 @@
     <entry file="file://$PROJECT_DIR$/js/dropdowns/GenericObjectLister.jsx" />
     <entry file="file://$PROJECT_DIR$/dist/js/listers/DiagramLister.js" />
     <entry file="file://$PROJECT_DIR$/js/listers/DiagramLister.jsx" />
-    <entry file="file://$PROJECT_DIR$/js/forms/NewSchemaForm.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/octicons/lib/svg/database.svg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -503,13 +461,6 @@
         <state relative-caret-position="615">
           <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/App.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="29" column="59" lean-forward="true" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -527,19 +478,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/listers/ObjectListBuilder.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/js/listers/ObjectListBuilder.jsx" />
     <entry file="file://$PROJECT_DIR$/dist/js/dialogs/Dialog.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -547,23 +490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/listers/SchemaLister.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1057">
-          <caret line="85" column="36" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/js/RelationshipSchema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -575,42 +501,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/tabs/DynamicTabSheet.jsx">
+    <entry file="file://$PROJECT_DIR$/dist/js/draw2d/lib/canvg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54">
-          <caret line="54" column="19" lean-forward="true" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/forms/MultiSelect.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="69" lean-forward="false" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/dialogs/DynamicDialog.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="45" lean-forward="false" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/listers/GenericLister.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="113" column="65" lean-forward="false" selection-start-line="113" selection-start-column="65" selection-end-line="113" selection-end-column="65" />
+        <state relative-caret-position="348">
+          <caret line="329" column="9" lean-forward="true" selection-start-line="329" selection-start-column="9" selection-end-line="329" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/forms/DynamicObjectForm.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="44" column="53" lean-forward="true" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
+        <state relative-caret-position="400">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/dialogs/DynamicDialog.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="3" lean-forward="false" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/tabs/DynamicTabSheet.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="54" column="19" lean-forward="false" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/forms/NewSchemaForm.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/listers/SchemaLister.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="60" column="97" lean-forward="true" selection-start-line="60" selection-start-column="97" selection-end-line="60" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/listers/GenericLister.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/forms/MultiSelect.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="66" column="7" lean-forward="false" selection-start-line="66" selection-start-column="7" selection-end-line="66" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/js/RelationshipSchema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="18" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="30" selection-end-column="18" />
           <folding />
         </state>
       </provider>

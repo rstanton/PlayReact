@@ -1,5 +1,3 @@
-//@ToDo there is a bug in here in that even if a schema changes and we reload the 'dynamic tab sheet' it doesn't cascade the changes :(
-
 class NewSchemaForm extends React.Component{
     constructor(props){
         super(props);
@@ -30,7 +28,6 @@ class NewSchemaForm extends React.Component{
         });
     }
 
-    //@ToDo, make this create a new view for the given schema
     handleSubmit(event){
         let obj = JSON.parse(this.state.schema);
 

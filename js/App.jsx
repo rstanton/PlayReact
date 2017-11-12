@@ -1,8 +1,6 @@
 /**
  * This is the entry point to the 'admin' application
  *
- * @ToDo - Rethink the relationship model, It doesn't have the same logic as plain objects, so needs it's own management.
- * @ToDo - diagrams, do they start as objects?
  */
 class App extends React.Component{
     constructor(props){
@@ -56,6 +54,13 @@ class App extends React.Component{
                     map:function(doc) {
                         if(doc.title) {
                             emit(doc.title, doc);
+                        }
+                    }.toString()
+                },
+                by_type:{
+                    map:function(doc) {
+                        if(doc.type) {
+                            emit(doc.type, doc);
                         }
                     }.toString()
                 },

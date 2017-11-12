@@ -11,8 +11,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * This is the entry point to the 'admin' application
  *
- * @ToDo - Rethink the relationship model, It doesn't have the same logic as plain objects, so needs it's own management.
- * @ToDo - diagrams, do they start as objects?
  */
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -77,6 +75,13 @@ var App = function (_React$Component) {
                         map: function (doc) {
                             if (doc.title) {
                                 emit(doc.title, doc);
+                            }
+                        }.toString()
+                    },
+                    by_type: {
+                        map: function (doc) {
+                            if (doc.type) {
+                                emit(doc.type, doc);
                             }
                         }.toString()
                     },
