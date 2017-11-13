@@ -71,18 +71,18 @@ var App = function (_React$Component) {
             var designDoc = {
                 _id: '_design/' + schema.title,
                 views: {
-                    by_name: {
-                        map: function (doc) {
-                            if (doc.title) {
-                                emit(doc.title, doc);
-                            }
-                        }.toString()
-                    },
                     by_type: {
                         map: function (doc) {
                             if (doc.type) {
                                 emit(doc.type, doc);
                             }
+                        }.toString()
+                    },
+                    by_name_and_type: {
+                        map: function (doc) {
+                            if (doc.type) emit(doc.title, doc);
+
+                            if (doc.name) emit(doc.name, doc);
                         }.toString()
                     },
                     all: {

@@ -18,8 +18,14 @@ var Canvas = function (_React$Component) {
 
         _this.componentDidMount = _this.componentDidMount.bind(_this);
         _this.init = _this.init.bind(_this);
+        _this.getSchemas = _this.getSchemas.bind(_this);
+        _this.getTemplate = _this.getTemplate.bind(_this);
+        _this.getObjects = _this.getObjects.bind(_this);
 
         _this.schemas = [];
+        _this.template = {};
+        _this.diagrams = [];
+        _this.objects = {};
         _this.view = {};
 
         _this.init();
@@ -35,27 +41,73 @@ var Canvas = function (_React$Component) {
             this.view = new View(this.props.id, width, height);
             this.view.setScrollArea("#" + this.props.id);
         }
+    }, {
+        key: "getSchemas",
+        value: function getSchemas() {
+            var db = new PouchDB(SCHEMA_DB);
+
+            db.query(SCHEMA_ALL_VIEW, function (err, res) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    var schemas = res.rows.map(function (obj) {
+                        return obj;
+                    }.bind(this));
+
+                    this.schemas = schemas;
+
+                    db = null;
+                }
+            }.bind(this));
+        }
+    }, {
+        key: "getTemplate",
+        value: function getTemplate(templateName) {
+            var db = new PouchDB(OBJECT_DB);
+
+            //Get the template for the diagram
+            console.log("Loading Template: " + templateName);
+
+            db.query(OBJECT_BY_TYPE, { keys: [templateName, "http://architecture.com/Template"] }, function (err, res) {
+                if (err) console.error(err);else {
+                    this.template = res.rows[0].value;
+                    this.getObjects(this.template.allowedObjects);
+                }
+            }.bind(this));
+        }
 
         /**
+         *
+         * @param allowedObjects A list of string which represents the 'type' of allowed objects, eg "http://architecture.com/Application"
+         */
+
+    }, {
+        key: "getObjects",
+        value: function getObjects(allowedObjects) {
+            var db = new PouchDB(OBJECT_DB);
+
+            allowedObjects.map(function (obj) {
+                db.query(OBJECT_BY_TYPE, { key: obj }, function (err, res) {
+                    if (err) console.error(err);else {
+                        var list = res.rows.map(function (row) {
+                            return row.value;
+                        });
+
+                        this.objects[obj] = list;
+                    }
+                }.bind(this));
+            }.bind(this));
+        }
+        /**
          * Read all the schemas and make them available to the rest of the app
+         * @ToDo ... parameterise, hardcoded at the minute
          */
 
     }, {
         key: "init",
         value: function init() {
-            var db = new PouchDB(SCHEMA_DB);
-
-            db.query(SCHEMA_ALL_VIEW, function (err, res) {
-                console.debug("Got " + res.rows.length + " schemas");
-
-                var schemas = res.rows.map(function (obj) {
-                    return obj;
-                }.bind(this));
-
-                this.schemas = schemas;
-
-                db = null;
-            }.bind(this));
+            this.getSchemas();
+            this.getTemplate("App Comms Diagram Template");
         }
     }, {
         key: "render",
@@ -74,13 +126,13 @@ var Canvas = function (_React$Component) {
 
             return React.createElement(
                 "div",
-                null,
-                React.createElement("span", { style: floatStyle, className: "glyphicon glyphicon-plus-sign", "aria-hidden": "true" }),
+                { id: "container", className: "container-fluid" },
                 React.createElement(NavBar, null),
+                React.createElement(ReuseDialog, { canvas: this.props.id, id: "reuseDialog", title: "Reuse Objects", modal: false }),
                 React.createElement(
                     "div",
                     { id: this.props.id + "_container" },
-                    React.createElement("div", { style: canvasStyle, id: this.props.id })
+                    React.createElement("div", { style: canvasStyle, id: this.props.id, className: "ui-droppable" })
                 )
             );
         }

@@ -22,6 +22,12 @@ class View extends draw2d.Canvas {
     }
 
 
+    onDrop(droppedNode, x, y, shift, ctrl){
+        console.log("Canvas dropper");
+
+    }
+
+
     save(){
 
     }

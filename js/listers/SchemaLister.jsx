@@ -21,7 +21,7 @@ class SchemaLister extends React.Component{
             schemas:[]
         });
 
-        db.query("Schema/by_name", function(err, res) {
+        db.query("Schema/all", function(err, res) {
             if(err)
                 console.error(err);
             else {

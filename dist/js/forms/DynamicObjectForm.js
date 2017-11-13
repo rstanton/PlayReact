@@ -85,6 +85,7 @@ var DynamicObjectForm = function (_React$Component) {
 
                 if (obj.hide) continue;
 
+                //If the schema has a display name set use that, otherwise stick with the props.field
                 var displayName = field;
                 if (obj.displayName) {
                     displayName = obj.displayName;
@@ -93,7 +94,7 @@ var DynamicObjectForm = function (_React$Component) {
                 if (obj.type.localeCompare("string") == 0) {
                     inputFields.push(React.createElement(
                         "div",
-                        { key: field },
+                        { key: field, className: "form-group" },
                         React.createElement(
                             "label",
                             { htmlFor: "input" + field },
@@ -105,7 +106,7 @@ var DynamicObjectForm = function (_React$Component) {
                     //Handle refs by doing a lookup.
                     inputFields.push(React.createElement(
                         "div",
-                        { key: field },
+                        { key: field, className: "form-group" },
                         React.createElement(
                             "label",
                             { htmlFor: "input" + field },
@@ -116,21 +117,13 @@ var DynamicObjectForm = function (_React$Component) {
                 } else if (obj.type.localeCompare("array") == 0) {
                     inputFields.push(React.createElement(
                         "div",
-                        { key: field },
+                        { key: field, className: "form-group" },
                         React.createElement(
                             "label",
                             { htmlFor: "input" + field },
                             displayName
                         ),
-                        React.createElement(
-                            "div",
-                            { className: "form-inline" },
-                            React.createElement(
-                                "div",
-                                { className: "form-group" },
-                                React.createElement(Select, { value: this.state[field], multi: true, handleSelect: this.handleSelect, field: field, target: obj.$ref, list: this.props.allSchemas })
-                            )
-                        )
+                        React.createElement(Select, { value: this.state[field], multi: true, handleSelect: this.handleSelect, field: field, target: obj.$ref, list: this.props.allSchemas })
                     ));
                 }
             }

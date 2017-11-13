@@ -1,7 +1,9 @@
 const SCHEMA_DB = "Schema";
 const OBJECT_DB = "Object";
 const SCHEMA_ALL_VIEW = "Schema/all";
+const OBJECT_ALL_VIEW = "Object/all";
 const OBJECT_BY_TYPE = "Object/by_type";
+const OBJECT_BY_NAME_TYPE = "Object/by_name_and_type";
 
 const relationshipSchema = {
   "$schema": "http://json-schema.org/draft-06/schema#",

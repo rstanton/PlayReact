@@ -58,30 +58,29 @@ class DynamicObjectForm extends React.Component{
             if(obj.hide)
                 continue;
 
+            //If the schema has a display name set use that, otherwise stick with the props.field
             let displayName = field;
             if(obj.displayName){
                 displayName = obj.displayName;
             }
 
             if(obj.type.localeCompare("string")==0) {
-                inputFields.push(<div key={field}>
+                inputFields.push(<div key={field} className="form-group">
                     <label htmlFor={"input" + field}>{displayName}</label>
                     <input type="text" value={this.state[field]} onChange={this.handleChange} className="form-control" placeholder={"input " + field} id={field} data-field={field}/>
                 </div>);
             }
             else if(obj.type.localeCompare("object")==0){
                 //Handle refs by doing a lookup.
-                inputFields.push(<div key={field}><label htmlFor={"input"+field}>{displayName}</label>
+                inputFields.push(<div key={field} className="form-group">
+                    <label htmlFor={"input"+field}>{displayName}</label>
                     <Select value={this.state[field]} multi={false} handleSelect={this.handleSelect} field={field} target={obj.$ref} list={this.props.allSchemas}/>
                 </div>);
             }
             else if(obj.type.localeCompare("array")==0) {
-                inputFields.push(<div key={field}><label htmlFor={"input"+field}>{displayName}</label>
-                    <div className="form-inline">
-                        <div className="form-group">
-                            <Select value={this.state[field]} multi={true} handleSelect={this.handleSelect} field={field} target={obj.$ref} list={this.props.allSchemas}/>
-                        </div>
-                    </div>
+                inputFields.push(<div key={field} className="form-group">
+                    <label htmlFor={"input"+field}>{displayName}</label>
+                    <Select value={this.state[field]} multi={true} handleSelect={this.handleSelect} field={field} target={obj.$ref} list={this.props.allSchemas}/>
                 </div>);
             }
         }

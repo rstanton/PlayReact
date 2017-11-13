@@ -4,17 +4,16 @@
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/dist/js/forms/DynamicObjectForm.js" />
         <item url="file://$PROJECT_DIR$/dist/js/Canvas.js" />
-        <item url="file://$PROJECT_DIR$/dist/js/App.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/listers/SchemaLister.js" />
         <item url="file://$PROJECT_DIR$/dist/js/forms/MultiSelect.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/js/MultiSelect.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/App.js" />
         <item url="file://$PROJECT_DIR$/dist/js/dialogs/DynamicDialog.js" />
-        <item url="file://$PROJECT_DIR$/dist/js/listers/ObjectListBuilder.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/dialogs/ReuseDialog/ReuseDialog.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/dialogs/Dialog.js" />
+        <item url="file://$PROJECT_DIR$/dist/js/forms/NewSchemaForm.js" />
         <item url="file://$PROJECT_DIR$/dist/js/tabs/DynamicTabSheet.js" />
         <item url="file://$PROJECT_DIR$/dist/js/listers/GenericLister.js" />
         <item url="file://$PROJECT_DIR$/dist/js/navs/NavBar.js" />
-        <item url="file://$PROJECT_DIR$/dist/js/listers/SchemaLister.js" />
-        <item url="file://$PROJECT_DIR$/dist/js/dialogs/Dialog.js" />
-        <item url="file://$PROJECT_DIR$/dist/js/forms/NewSchemaForm.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -103,13 +102,14 @@
       <root url="file://$PROJECT_DIR$/dist/js/listers/DynamicLister.js" />
       <root url="file://$PROJECT_DIR$/dist/js/DynamicTabSheet.js" />
       <root url="file://$PROJECT_DIR$/dist/js/DynamicTabSheet.js" />
+      <root url="file://$PROJECT_DIR$/dist/dist/js/MultiSelect.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/listers/ObjectListBuilder.js" />
       <root url="file://$PROJECT_DIR$/dist/js/forms/DynamicObjectForm.js" />
       <root url="file://$PROJECT_DIR$/dist/js/Canvas.js" />
-      <root url="file://$PROJECT_DIR$/dist/js/App.js" />
       <root url="file://$PROJECT_DIR$/dist/js/forms/MultiSelect.js" />
-      <root url="file://$PROJECT_DIR$/dist/dist/js/MultiSelect.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/App.js" />
       <root url="file://$PROJECT_DIR$/dist/js/dialogs/DynamicDialog.js" />
-      <root url="file://$PROJECT_DIR$/dist/js/listers/ObjectListBuilder.js" />
+      <root url="file://$PROJECT_DIR$/dist/js/dialogs/ReuseDialog/ReuseDialog.js" />
       <root url="file://$PROJECT_DIR$/dist/js/tabs/DynamicTabSheet.js" />
       <root url="file://$PROJECT_DIR$/dist/js/listers/GenericLister.js" />
       <root url="file://$PROJECT_DIR$/dist/js/navs/NavBar.js" />
