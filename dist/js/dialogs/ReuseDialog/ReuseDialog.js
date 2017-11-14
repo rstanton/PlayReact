@@ -47,16 +47,6 @@ var ReuseDialog = function (_React$Component) {
                 appendTo: 'body',
                 zIndex: 150
             });
-
-            $("#" + "container").droppable({
-                greedy: true,
-                drop: function drop(event, ui) {
-                    console.log("Dropped");
-                },
-                activate: function activate(event, ui) {
-                    console.log("Active");
-                }
-            });
         }
     }, {
         key: "render",
@@ -91,8 +81,8 @@ var ReuseDialog = function (_React$Component) {
                                 { id: "collapseOne", className: "panel-collapse collapse in", role: "tabpanel", "aria-labelledby": "headingOne" },
                                 React.createElement(
                                     "div",
-                                    { id: "draggable", className: "panel-body" },
-                                    "This of Objects"
+                                    { id: "draggable", "data-title": "SAP ECC6 for Retail", className: "panel-body" },
+                                    "SAP ECC6 for Retail"
                                 )
                             )
                         )

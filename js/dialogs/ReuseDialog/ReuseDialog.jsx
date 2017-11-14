@@ -30,16 +30,6 @@ class ReuseDialog extends React.Component{
             appendTo: 'body',
             zIndex: 150
         });
-
-        $("#"+"container").droppable({
-            greedy:true,
-            drop:function(event,ui){
-                console.log("Dropped");
-            },
-            activate:function(event, ui){
-                console.log("Active");
-            }
-        });
     }
     render(){
         return <div id={this.props.id} title={this.props.title}>
@@ -54,8 +44,8 @@ class ReuseDialog extends React.Component{
                             </h4>
                         </div>
                         <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                            <div id="draggable" className="panel-body">
-                                This of Objects
+                            <div id="draggable" data-title="SAP ECC6 for Retail" className="panel-body">
+                                SAP ECC6 for Retail
                             </div>
                         </div>
                     </div>

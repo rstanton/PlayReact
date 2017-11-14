@@ -2,26 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0025b09d-5020-4a30-a77e-49a44a395915" name="Default" comment="Ch ch changes...">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/dialogs/ReuseDialog/ReuseDialog.jsx" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/js/MultiSelect.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/js/MultiSelect.js.map" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/js/diagram/ObjectShape.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/canvas.html" afterPath="$PROJECT_DIR$/canvas.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/App.js" afterPath="$PROJECT_DIR$/dist/js/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/App.js.map" afterPath="$PROJECT_DIR$/dist/js/App.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/Canvas.js" afterPath="$PROJECT_DIR$/dist/js/Canvas.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/Canvas.js.map" afterPath="$PROJECT_DIR$/dist/js/Canvas.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/RelationshipSchema.js" afterPath="$PROJECT_DIR$/dist/js/RelationshipSchema.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/diagram/View.js" afterPath="$PROJECT_DIR$/dist/js/diagram/View.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/forms/DynamicObjectForm.js" afterPath="$PROJECT_DIR$/dist/js/forms/DynamicObjectForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/forms/DynamicObjectForm.js.map" afterPath="$PROJECT_DIR$/dist/js/forms/DynamicObjectForm.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/listers/SchemaLister.js" afterPath="$PROJECT_DIR$/dist/js/listers/SchemaLister.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/listers/SchemaLister.js.map" afterPath="$PROJECT_DIR$/dist/js/listers/SchemaLister.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/App.jsx" afterPath="$PROJECT_DIR$/js/App.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/dialogs/ReuseDialog/ReuseDialog.js" afterPath="$PROJECT_DIR$/dist/js/dialogs/ReuseDialog/ReuseDialog.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/dialogs/ReuseDialog/ReuseDialog.js.map" afterPath="$PROJECT_DIR$/dist/js/dialogs/ReuseDialog/ReuseDialog.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/navs/NavBar.js" afterPath="$PROJECT_DIR$/dist/js/navs/NavBar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/navs/NavBar.js.map" afterPath="$PROJECT_DIR$/dist/js/navs/NavBar.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Canvas.jsx" afterPath="$PROJECT_DIR$/js/Canvas.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/forms/DynamicObjectForm.jsx" afterPath="$PROJECT_DIR$/js/forms/DynamicObjectForm.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/listers/SchemaLister.jsx" afterPath="$PROJECT_DIR$/js/listers/SchemaLister.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/dialogs/ReuseDialog/ReuseDialog.jsx" afterPath="$PROJECT_DIR$/js/dialogs/ReuseDialog/ReuseDialog.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/navs/NavBar.jsx" afterPath="$PROJECT_DIR$/js/navs/NavBar.jsx" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,18 +31,18 @@
       <file leaf-file-name="GenericLister.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/listers/GenericLister.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="771">
+            <state relative-caret-position="546">
               <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Canvas.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/Canvas.jsx">
+      <file leaf-file-name="RelationshipSchema.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dist/js/RelationshipSchema.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="951">
-              <caret line="107" column="62" lean-forward="false" selection-start-line="107" selection-start-column="62" selection-end-line="107" selection-end-column="62" />
+            <state relative-caret-position="375">
+              <caret line="37" column="45" lean-forward="false" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -58,8 +51,8 @@
       <file leaf-file-name="canvas.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/canvas.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="591">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="456">
+              <caret line="39" column="58" lean-forward="false" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -68,18 +61,8 @@
       <file leaf-file-name="View.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dist/js/diagram/View.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DynamicDialog.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/dialogs/DynamicDialog.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+            <state relative-caret-position="795">
+              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -88,8 +71,18 @@
       <file leaf-file-name="ReuseDialog.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/dialogs/ReuseDialog/ReuseDialog.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="33" column="15" lean-forward="false" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+            <state relative-caret-position="651">
+              <caret line="46" column="79" lean-forward="false" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObjectShape.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dist/js/diagram/ObjectShape.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -100,6 +93,26 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
               <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="17" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Canvas.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/Canvas.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-579">
+              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NavBar.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/navs/NavBar.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -132,7 +145,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/interfaces/IntDialog.jsx" />
         <option value="$PROJECT_DIR$/js/dialogs/interfaces/IntDialog.jsx" />
         <option value="$PROJECT_DIR$/js/forms/DiagramForm.jsx" />
         <option value="$PROJECT_DIR$/js/dialogs/diagrams/NewApplicationDialog" />
@@ -164,7 +176,6 @@
         <option value="$PROJECT_DIR$/js/dropdowns/GenericObjectLister.jsx" />
         <option value="$PROJECT_DIR$/js/DynamicTabSheet.jsx" />
         <option value="$PROJECT_DIR$/bower_components/octicons/lib/svg/database.svg" />
-        <option value="$PROJECT_DIR$/js/navs/NavBar.jsx" />
         <option value="$PROJECT_DIR$/js/listers/ObjectListBuilder.jsx" />
         <option value="$PROJECT_DIR$/dist/js/MultiSelect.jsx" />
         <option value="$PROJECT_DIR$/dist/js/dialogs/Dialog.js" />
@@ -179,10 +190,12 @@
         <option value="$PROJECT_DIR$/js/listers/SchemaLister.jsx" />
         <option value="$PROJECT_DIR$/js/App.jsx" />
         <option value="$PROJECT_DIR$/dist/js/RelationshipSchema.js" />
-        <option value="$PROJECT_DIR$/canvas.html" />
-        <option value="$PROJECT_DIR$/dist/js/diagram/View.js" />
         <option value="$PROJECT_DIR$/js/dialogs/ReuseDialog/ReuseDialog.jsx" />
+        <option value="$PROJECT_DIR$/dist/js/diagram/ObjectShape.js" />
+        <option value="$PROJECT_DIR$/dist/js/diagram/View.js" />
+        <option value="$PROJECT_DIR$/js/navs/NavBar.jsx" />
         <option value="$PROJECT_DIR$/js/Canvas.jsx" />
+        <option value="$PROJECT_DIR$/canvas.html" />
       </list>
     </option>
   </component>
@@ -205,8 +218,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1701" />
     <option name="y" value="221" />
-    <option name="width" value="1018" />
-    <option name="height" value="553" />
+    <option name="width" value="1922" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -271,15 +284,6 @@
             <path>
               <item name="PlayReact" type="b2602c69:ProjectViewProjectNode" />
               <item name="PlayReact" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="dialogs" type="462c0819:PsiDirectoryNode" />
-              <item name="ReuseDialog" type="462c0819:PsiDirectoryNode" />
-              <item name="ReuseDialog.js" type="620a8d5e:NestingTreeNode" />
-            </path>
-            <path>
-              <item name="PlayReact" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PlayReact" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -300,6 +304,12 @@
               <item name="PlayReact" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="listers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PlayReact" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PlayReact" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="navs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -387,7 +397,8 @@
       <workItem from="1510393540285" duration="5977000" />
       <workItem from="1510503068676" duration="7339000" />
       <workItem from="1510514082125" duration="8874000" />
-      <workItem from="1510603803424" duration="8864000" />
+      <workItem from="1510603803424" duration="8920000" />
+      <workItem from="1510686363403" duration="7748000" />
     </task>
     <task id="LOCAL-00001" summary="Ch ch changes...">
       <created>1509281452398</created>
@@ -400,7 +411,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197239000" />
+    <option name="totallyTimeSpent" value="205043000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -412,13 +423,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1365" y="0" width="1922" height="1053" extended-state="6" />
+    <frame x="1701" y="221" width="1922" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14285715" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3273906" sideWeight="0.48708487" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32185146" sideWeight="0.65946233" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.49578503" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938644" sideWeight="0.4897206" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32077503" sideWeight="0.3405377" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -430,6 +440,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.49578503" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -468,7 +479,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/listers/InterfaceLister.jsx" />
     <entry file="file://$PROJECT_DIR$/dist/js/forms/ReuseAppForm.js" />
     <entry file="file://$PROJECT_DIR$/dist/js/forms/NewDiagramForm.js" />
     <entry file="file://$PROJECT_DIR$/js/dialogs/NewDiagramDialog.jsx" />
@@ -537,13 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/navs/NavBar.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="72" lean-forward="false" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/listers/ObjectListBuilder.jsx" />
     <entry file="file://$PROJECT_DIR$/dist/js/dialogs/Dialog.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -604,15 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="82" column="42" lean-forward="true" selection-start-line="82" selection-start-column="42" selection-end-line="82" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/js/RelationshipSchema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285">
-          <caret line="5" column="54" lean-forward="false" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -634,7 +628,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/listers/GenericLister.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
+        <state relative-caret-position="546">
           <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="33" />
           <folding />
         </state>
@@ -648,34 +642,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dist/js/diagram/ObjectShape.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/dialogs/ReuseDialog/ReuseDialog.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="33" column="15" lean-forward="false" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+        <state relative-caret-position="651">
+          <caret line="46" column="79" lean-forward="false" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/js/diagram/View.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="795">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/canvas.html">
+    <entry file="file://$PROJECT_DIR$/js/navs/NavBar.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="591">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Canvas.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="951">
-          <caret line="107" column="62" lean-forward="false" selection-start-line="107" selection-start-column="62" selection-end-line="107" selection-end-column="62" />
+        <state relative-caret-position="-579">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/canvas.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="39" column="58" lean-forward="false" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/js/RelationshipSchema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="37" column="45" lean-forward="false" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="45" />
           <folding />
         </state>
       </provider>

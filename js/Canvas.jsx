@@ -24,6 +24,9 @@ class Canvas extends React.Component {
 
         this.view = new View(this.props.id, width, height);
         this.view.setScrollArea("#" + this.props.id);
+
+
+
     }
 
 
@@ -106,12 +109,11 @@ class Canvas extends React.Component {
         };
 
         return <div id="container" className={"container-fluid"}>
-            <NavBar/>
-            <ReuseDialog canvas={this.props.id} id={"reuseDialog"} title={"Reuse Objects"} modal={false}/>
+            <ReuseDialog id={"reuseDialog"} title={"Reuse Objects"} modal={false}/>
             <div id={this.props.id + "_container"}>
                 <div style={canvasStyle} id={this.props.id} className={"ui-droppable"}/>
             </div>
-        </div>
+        </div>;
     }
 }
 

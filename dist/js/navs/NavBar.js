@@ -25,10 +25,6 @@ var NavBar = function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
-            var style = {
-                zIndex: "500"
-            };
-
             return React.createElement(
                 "nav",
                 { className: "navbar navbar-default navbar-fixed-top" },
@@ -58,11 +54,6 @@ var NavBar = function (_React$Component) {
                     )
                 )
             );
-        }
-    }, {
-        key: "showDialog",
-        value: function showDialog(event) {
-            console.log("Clicked");
         }
     }]);
 

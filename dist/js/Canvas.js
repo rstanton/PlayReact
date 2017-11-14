@@ -127,8 +127,7 @@ var Canvas = function (_React$Component) {
             return React.createElement(
                 "div",
                 { id: "container", className: "container-fluid" },
-                React.createElement(NavBar, null),
-                React.createElement(ReuseDialog, { canvas: this.props.id, id: "reuseDialog", title: "Reuse Objects", modal: false }),
+                React.createElement(ReuseDialog, { id: "reuseDialog", title: "Reuse Objects", modal: false }),
                 React.createElement(
                     "div",
                     { id: this.props.id + "_container" },
